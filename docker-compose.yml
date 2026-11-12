@@ -1,0 +1,17 @@
+services:
+  password-security-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: password-security-service
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - CORS_ORIGINS=*
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
