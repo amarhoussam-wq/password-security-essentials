@@ -102,7 +102,7 @@ class PassphraseResponse(BaseModel):
 # ============================================================================
 
 class TotpSetupRequest(BaseModel):
-    account_name: str = Field(default="student@univ-ouargla.dz", description="User or account identifier")
+    account_name: str = Field(default="user@example.com", description="User or account identifier")
     issuer: str = Field(default="PasswordSecurityApp", description="Application or organization name")
 
 

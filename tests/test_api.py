@@ -71,7 +71,7 @@ class TestApiEndpoints:
         assert "Diceware" in res.method
 
     def test_totp_setup_endpoint(self):
-        req = TotpSetupRequest(account_name="student@univ-ouargla.dz", issuer="SecurityApp")
+        req = TotpSetupRequest(account_name="user@example.com", issuer="SecurityApp")
         res = totp_setup(req)
         assert len(res.secret) >= 16
         assert "otpauth://" in res.provisioning_uri

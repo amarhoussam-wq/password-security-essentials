@@ -9,7 +9,6 @@ import pytest
 def run_tests():
     print("=" * 70)
     print("  Password Security Essentials Microservice — Full Test Suite")
-    print("  Supervisor: Dr. Brahim Ferik | University of Ouargla")
     print("=" * 70)
 
     exit_code = pytest.main(["tests", "-v"])

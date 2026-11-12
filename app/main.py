@@ -6,9 +6,6 @@ Exposes RESTful endpoints for:
 3. Passphrase Generator (Diceware method / EFF wordlist)
 4. Two-Factor Authentication (TOTP protocol / RFC 6238)
 5. Breached Passwords Analysis (Have I Been Pwned k-anonymity API)
-
-Supervisor: Dr. Brahim Ferik
-Institution: University of Ouargla
 """
 
 import os
@@ -49,8 +46,8 @@ app = FastAPI(
     ),
     version="1.0.0",
     contact={
-        "name": "Applied Programming Tasks - Password Security Essentials",
-        "email": "ferik.brahim@univ-ouargla.dz",
+        "name": "Password Security Microservice",
+        "url": "https://github.com/amarhoussam-wq/password-security-essentials",
     },
 )
 

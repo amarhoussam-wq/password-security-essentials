@@ -49,7 +49,7 @@ class TestTOTP:
         secret = "JBSWY3DPEHPK3PXP"
         uri = get_provisioning_uri(
             secret=secret,
-            account_name="student@univ-ouargla.dz",
+            account_name="user@example.com",
             issuer="SecurityMicroservice",
         )
         assert uri.startswith("otpauth://totp/")

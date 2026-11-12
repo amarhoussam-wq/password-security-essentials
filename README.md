@@ -1,25 +1,25 @@
-# Password Security Essentials Microservice
+# Password Security Suite
 
 [![Python](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688.svg)](https://fastapi.tiangolo.com/)
 [![Tests](https://img.shields.io/badge/Tests-61%20Passed-brightgreen.svg)]()
+[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED.svg)](Dockerfile)
+[![PWA](https://img.shields.io/badge/PWA-Installable-purple.svg)](static/manifest.json)
 [![License](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
 
-An independent, comprehensive software module dedicated to password protection and management within the authentication lifecycle, architected as a high-performance RESTful microservice.
+An independent, enterprise-grade software module and mobile-ready web application dedicated to password protection, cryptographic generation, and two-factor authentication lifecycle management.
 
-Designed for the **Practical Work Assignment**: *Applied Programming Tasks: Exploring Password Security Essentials*  
-**Supervisor:** Dr. Brahim Ferik (`ferik.brahim@univ-ouargla.dz`)  
-**Institution:** University of Ouargla
+Architected as a high-performance RESTful microservice with an interactive Progressive Web App (PWA) and Android-ready interface.
 
 ---
 
-## Technical Tasks Implemented
+## Features
 
 1. **Password Strength Verifier (`POST /analyze`):**
    - Evaluates complexity based on Shannon search-space entropy: $E = L \cdot \log_2(R)$.
    - Character diversity analysis (lowercase, uppercase, digits, symbols).
    - Defensive heuristic pattern detection (common leaked dictionaries, spatial keyboard walks, sequential runs, repetitions).
-   - Real-world GPU brute-force crack time estimation.
+   - Real-world GPU brute-force crack time estimation ($10^{10}$ guesses/sec).
    - Actionable remediation suggestions.
 
 2. **Secure Password Generator (`POST /generate/password`):**
@@ -46,15 +46,14 @@ Designed for the **Practical Work Assignment**: *Applied Programming Tasks: Expl
 
 ---
 
-## Interactive Web Dashboard
+## Mobile Application & PWA Installation
 
-The microservice includes a modern, responsive single-page web dashboard served directly at `http://localhost:8000/`:
+The application includes full **Progressive Web App (PWA)** and mobile device support:
 
-- **Strength Verifier Tab:** Real-time entropy meter, score bar, character diversity pills, suggestions, and one-click breach check.
-- **Password Generator Tab:** Interactive sliders, character toggles, instant strength score, and clipboard copy.
-- **Passphrase Generator Tab:** Diceware word count, separator controls, entropy calculations, and crack time estimates.
-- **Two-Factor Authentication Tab:** Instant 2FA setup, scannable QR code display, live 30-second animated countdown bar, live token display, and interactive code verification tester.
-- **Breach Checker Tab:** Interactive visual k-anonymity step-by-step explainer with real-time API query.
+### 📱 Installing on Android / iPhone:
+1. Open the application URL in Google Chrome (or Safari on iOS) on your phone.
+2. An **"Install App" / "تثبيت التطبيق"** banner or button will appear automatically.
+3. Tap **Install** — the app installs directly to your home screen with a native icon, launches full-screen with offline support, and functions identically to a native Android app without requiring third-party app stores!
 
 ---
 
@@ -64,8 +63,8 @@ The microservice includes a modern, responsive single-page web dashboard served 
 
 ```bash
 # Clone the repository
-git clone https://github.com/Vikrant892/password-strength-api.git
-cd password-strength-api-main
+git clone https://github.com/amarhoussam-wq/password-security-essentials.git
+cd password-security-essentials
 
 # Install dependencies
 pip install -r requirements.txt
@@ -81,6 +80,27 @@ uvicorn app.main:app --reload --port 8000
 - Interactive Swagger API Documentation: **`http://localhost:8000/docs`**
 - Interactive ReDoc Specification: **`http://localhost:8000/redoc`**
 - Health Check Endpoint: **`http://localhost:8000/health`**
+
+---
+
+## Docker & Coolify Deployment
+
+The repository includes a production-ready `Dockerfile` and `docker-compose.yml`:
+
+```bash
+# Run with Docker
+docker build -t password-security-suite .
+docker run -p 8000:8000 password-security-suite
+
+# Or run with Docker Compose
+docker compose up -d
+```
+
+### Deploying to Coolify:
+1. In Coolify, click **+ New Resource** ➔ **Public Repository** (or Private).
+2. Enter the repository URL: `https://github.com/amarhoussam-wq/password-security-essentials.git`
+3. Set Port to **`8000`** and Healthcheck Path to **`/health`**.
+4. Click **Deploy** — Coolify builds and runs the container with automatic SSL/HTTPS.
 
 ---
 
@@ -101,7 +121,7 @@ python test_runner.py
 ## Project Structure
 
 ```
-password-strength-api-main/
+password-security-essentials/
 │
 ├── app/
 │   ├── __init__.py
@@ -115,12 +135,13 @@ password-strength-api-main/
 │   └── breach_check.py      # Have I Been Pwned k-anonymity breach analyzer
 │
 ├── static/
-│   └── index.html           # Interactive demonstration web dashboard
-├── frontend/
-│   └── index.html           # Mirror of web dashboard
+│   ├── index.html           # Interactive web & mobile PWA dashboard
+│   ├── manifest.json        # Web App Manifest for Android installation
+│   ├── sw.js                # Service Worker for offline mobile capability
+│   ├── icon-192.png         # Mobile application icon (192x192)
+│   └── icon-512.png         # Mobile application icon (512x512)
 │
 ├── tests/
-│   ├── __init__.py
 │   ├── test_analyzer.py     # 21 tests for strength evaluation & entropy
 │   ├── test_generator.py    # 8 tests for CSPRNG generation & uniqueness
 │   ├── test_passphrase.py   # 9 tests for Diceware & wordlist integrity
@@ -128,15 +149,9 @@ password-strength-api-main/
 │   ├── test_breach.py       # 5 tests for k-anonymity & hash range parsing
 │   └── test_api.py          # 10 integration tests for RESTful API endpoints
 │
-├── REPORT.md                # Comprehensive Technical Report for Dr. Brahim Ferik
-├── test_runner.py           # Unified test execution script
+├── REPORT.md                # Comprehensive Software Architecture & Cryptography Report
+├── Dockerfile               # Production Docker container
+├── docker-compose.yml       # Docker Compose service definition
 ├── requirements.txt         # Production dependencies
-├── Dockerfile               # Container definition
 └── README.md                # Project documentation
 ```
-
----
-
-## Technical Documentation
-
-For complete mathematical derivations, architectural decisions, and defense session talking points, refer to the [Technical Report (REPORT.md)](REPORT.md).

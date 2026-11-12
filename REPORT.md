@@ -1,9 +1,7 @@
-# Practical Work Technical Report
-## Applied Programming Tasks: Exploring Password Security Essentials
+# Technical Architecture & Engineering Report
+## Password Security Essentials Microservice
 
-**Supervisor:** Dr. Brahim Ferik  
-**Academic Institution:** Université Kasdi Merbah Ouargla (Univ Ouargla)  
-**Submission Destination:** `ferik.brahim@univ-ouargla.dz`  
+**Subject:** Exploring Password Security Essentials  
 **Architecture:** Independent Microservice & Security Middleware  
 **API Specification:** RESTful OpenAPI 3.1  
 **Test Suite:** 61 Automated Tests (100% Pass Rate)
@@ -21,20 +19,20 @@
    - [3.5 Breached Passwords Analysis (HIBP k-Anonymity)](#35-breached-passwords-analysis-hibp-k-anonymity)
 4. [Complete RESTful API Documentation](#4-complete-restful-api-documentation)
 5. [Comprehensive Test Suite & Verification Matrix](#5-comprehensive-test-suite--verification-matrix)
-6. [Defense Session Preparation & Architectural Q&A](#6-defense-session-preparation--architectural-qa)
+6. [Architectural Q&A and Defenses](#6-architectural-qa-and-defenses)
 
 ---
 
 ## 1. Executive Summary & Architectural Overview
 
-The objective of this practical work is to design, implement, and validate an independent, production-ready software module dedicated to password protection and management across the user authentication lifecycle. 
+The objective of this software is to provide an independent, production-ready module dedicated to password protection and management across the user authentication lifecycle. 
 
 The software is engineered as a **stateless microservice** exposing a functional RESTful API capable of serving as a security middleware for web, mobile, and third-party backend applications.
 
 ```
                               +---------------------------------------+
                               |      Third-Party Application /        |
-                              |         Client Dashboard              |
+                              |         Client Dashboard / Mobile     |
                               +-------------------+-------------------+
                                                   | REST (JSON / HTTPS)
                                                   v
@@ -59,7 +57,7 @@ The software is engineered as a **stateless microservice** exposing a functional
 2. **Defensive Cryptography:** Strict avoidance of pseudo-random generators (`random` module). All randomness originates from the operating system's cryptographic entropy source (`secrets` module).
 3. **Zero-Knowledge Privacy:** Integration with external breach monitoring via Have I Been Pwned (HIBP) adheres strictly to the mathematical **k-anonymity** model, ensuring neither passwords nor full hashes ever traverse the network.
 4. **Standards Compliance:** Full adherence to **RFC 6238** (TOTP) and **RFC 4226** (HOTP), validated against the official RFC test vectors.
-5. **Interactive Demonstration UI:** An integrated, modern dark-mode Single Page Application (SPA) served at `/` for live defense and demonstration.
+5. **Interactive Demonstration UI & Mobile Support:** An integrated, modern dark-mode Progressive Web Application (PWA) served at `/` with installable mobile support.
 
 ---
 
@@ -120,7 +118,7 @@ Our generator strictly utilizes `secrets.choice()`:
 ---
 
 ### 3.3 Passphrase Generator (Diceware Method)
-Based on Arnold Reinhold's **Diceware method**, this component generates passphrases that achieve exceptional cryptographic entropy while remaining human-memorable (the famous XKCD "correct horse battery staple" principle).
+Based on Arnold Reinhold's **Diceware method**, this component generates passphrases that achieve exceptional cryptographic entropy while remaining human-memorable.
 
 #### 1. EFF Large Wordlist
 The implementation incorporates the official **Electronic Frontier Foundation (EFF) Large Wordlist**, containing exactly $N = 7,776$ distinct words ($6^5 = 7776$, representing 5 dice rolls).
@@ -134,7 +132,7 @@ $$E_{\text{base}} = W \times 12.9248 \text{ bits}$$
   $$E_{\text{total}} = E_{\text{base}} + \log_2(10) \approx E_{\text{base}} + 3.3219 \text{ bits}$$
 - **Comparative Example:** A 5-word Diceware passphrase with a digit yields:
   $$5 \times 12.9248 + 3.3219 \approx 67.95 \text{ bits of entropy}$$
-  This requires approximately **901 years** to crack at 10 billion guesses/second, yet remains trivial for humans to memorize.
+  This requires approximately **901 years** to crack at 10 billion guesses/second, yet remains easy for humans to memorize.
 
 ---
 
@@ -296,16 +294,16 @@ curl -X POST http://localhost:8000/generate/passphrase \
 ```bash
 curl -X POST http://localhost:8000/2fa/setup \
   -H "Content-Type: application/json" \
-  -d '{"account_name": "student@univ-ouargla.dz", "issuer": "PasswordSecurityApp"}'
+  -d '{"account_name": "user@example.com", "issuer": "PasswordSecurityApp"}'
 ```
 **Response (200 OK):**
 ```json
 {
   "secret": "H5N3T3VWBO64DZG2J52MDXBNCKHGNTZF",
-  "provisioning_uri": "otpauth://totp/PasswordSecurityApp%3Astudent%40univ-ouargla.dz?secret=H5N3T3VWBO64DZG2J52MDXBNCKHGNTZF&issuer=PasswordSecurityApp&algorithm=SHA1&digits=6&period=30",
+  "provisioning_uri": "otpauth://totp/PasswordSecurityApp%3Auser%40example.com?secret=H5N3T3VWBO64DZG2J52MDXBNCKHGNTZF&issuer=PasswordSecurityApp&algorithm=SHA1&digits=6&period=30",
   "qr_code_base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA...",
   "issuer": "PasswordSecurityApp",
-  "account_name": "student@univ-ouargla.dz",
+  "account_name": "user@example.com",
   "digits": 6,
   "period": 30
 }
@@ -368,21 +366,12 @@ tests/test_totp.py        ........                                      ( 8 pass
 tests/test_breach.py      .....                                         ( 5 passed)
 tests/test_api.py         ..........                                    (10 passed)
 
-============================= 61 passed in 1.65s ==============================
+============================= 61 passed in 1.34s ==============================
 ```
-
-### Detailed Test Verification Highlights:
-1. **RFC 6238 Appendix B Conformance:** Validated using the exact test vectors published in the IETF standard (test timestamps: $59\text{s}$, $1111111109\text{s}$, $1111111111\text{s}$, $1234567890\text{s}$, $2000000000\text{s}$).
-2. **Clock Skew Tolerance:** Validated verification behavior at offset steps $-1$, $0$, $+1$, and verified rejection at step $\pm 2$ when window is set to 1.
-3. **Entropy Proportionality:** Proved that entropy increases strictly with length and character diversity, and that Diceware entropy scales linearly by $12.92\text{ bits}$ per word.
-4. **CSPRNG Uniqueness:** Generated sets of random passwords to verify absence of collisions and adherence to selected character pools.
-5. **K-Anonymity Mock Testing:** Validated prefix extraction and suffix matching under simulated positive, negative, and network timeout conditions.
 
 ---
 
-## 6. Defense Session Preparation & Architectural Q&A
-
-During the evaluation defense with Dr. Brahim Ferik, the following architectural choices and technical defenses can be presented:
+## 6. Architectural Q&A and Defenses
 
 ### Q1: Why use Python's `secrets` module instead of `random`?
 > **Answer:** Python's standard `random` module uses the Mersenne Twister (MT19937) PRNG. While statistically uniform, it is cryptographically insecure because observing 624 32-bit values exposes its internal state, allowing an attacker to determine all prior and future passwords. The `secrets` module interfaces directly with operating system entropy pools (e.g. `CryptGenRandom` on Windows, `/dev/urandom` on POSIX systems), guaranteeing non-predictability.
@@ -395,10 +384,3 @@ During the evaluation defense with Dr. Brahim Ferik, the following architectural
 
 ### Q4: Why is Have I Been Pwned safe to query with user passwords?
 > **Answer:** We employ Troy Hunt's **k-anonymity** model. The server hashes the password with SHA-1, splits the hash into a 5-character prefix and a 35-character suffix, and transmits *only* the prefix. HIBP returns all hash suffixes beginning with that prefix. The matching takes place locally. HIBP never receives the password or the complete hash.
-
-### Q5: How is this module architected to act as security middleware?
-> **Answer:** The module is completely stateless and containerized. Any third-party authentication service (e.g., user registration, login, 2FA prompt) can integrate with it via simple HTTP POST requests (`/analyze` during password creation, `/generate/password` for password resets, `/2fa/setup` and `/2fa/verify` during authentication).
-
----
-
-*Practical Work Assignment completed and verified in full compliance with Dr. Brahim Ferik's specifications.*

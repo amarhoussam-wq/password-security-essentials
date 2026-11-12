@@ -7,6 +7,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="manifest" href="/static/manifest.json">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="/static/icon-192.png">
     <style>
         :root {
             --bg: #0b0c16;
@@ -639,11 +644,13 @@
         <div class="brand-box">
             <div class="brand-logo">🛡️</div>
             <div class="brand-text">
-                <h1>Password Security Microservice</h1>
-                <span>Applied Programming Tasks · Dr. Brahim Ferik · Univ Ouargla</span>
+                <h1>Password Security Suite</h1>
+                <span>Advanced Cybersecurity Tools · Web & Mobile</span>
             </div>
         </div>
         <div class="nav-links">
+            <a href="/static/passguard.apk" download="PassGuard.apk" class="badge-link" style="background:#10b981;color:#000;border-color:#10b981;font-weight:700;">📥 Download APK</a>
+            <button id="pwaInstallBtn" class="badge-link" style="display:none;background:var(--accent-primary);color:#fff;border-color:var(--accent-primary);font-weight:700;">📱 Install App</button>
             <a href="/docs" target="_blank" class="badge-link">⚡ Swagger UI (/docs)</a>
             <a href="/redoc" target="_blank" class="badge-link">📘 ReDoc</a>
             <a href="/health" target="_blank" class="badge-link">💚 /health</a>
@@ -909,8 +916,8 @@
 
     <!-- Footer -->
     <footer>
-        <p><strong>Password Security Essentials</strong> · Microservice Architecture Practical Work</p>
-        <p style="margin-top:4px;">Supervisor: <strong>Dr. Brahim Ferik</strong> · Email: <a href="mailto:ferik.brahim@univ-ouargla.dz" style="color:var(--accent-primary);">ferik.brahim@univ-ouargla.dz</a> · University of Ouargla</p>
+        <p><strong>Password Security Suite</strong> · Complete Web & Mobile Application</p>
+        <p style="margin-top:4px;color:var(--text-muted);font-size:0.8rem;">Strength Analysis · CSPRNG Generator · Diceware Passphrase · TOTP 2FA · HIBP Breach Checker</p>
     </footer>
 </div>
 
@@ -1143,7 +1150,7 @@
             const res = await fetch('/2fa/setup', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ account_name: 'student@univ-ouargla.dz', issuer: 'PasswordSecurityApp' })
+                body: JSON.stringify({ account_name: 'user@example.com', issuer: 'PasswordSecurityApp' })
             });
             const data = await res.json();
             currentSecret = data.secret;
@@ -1233,6 +1240,30 @@
 
     // Initial analysis on load
     analyzeVerifierLive();
+
+    // Service Worker & PWA Installation
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/static/sw.js').catch(err => console.log('SW register error:', err));
+        });
+    }
+
+    let deferredPrompt;
+    const pwaBtn = document.getElementById('pwaInstallBtn');
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        if (pwaBtn) {
+            pwaBtn.style.display = 'inline-flex';
+            pwaBtn.addEventListener('click', () => {
+                pwaBtn.style.display = 'none';
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then(() => {
+                    deferredPrompt = null;
+                });
+            });
+        }
+    });
 </script>
 </body>
 </html>

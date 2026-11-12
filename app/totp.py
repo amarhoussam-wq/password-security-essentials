@@ -35,7 +35,7 @@ def generate_secret(byte_length: int = 20) -> str:
 
 def get_provisioning_uri(
     secret: str,
-    account_name: str = "student@univ-ouargla.dz",
+    account_name: str = "user@example.com",
     issuer: str = "PasswordSecurityApp",
     digits: int = 6,
     period: int = 30,

@@ -1,0 +1,22 @@
+{
+  "name": "Password Security Suite",
+  "short_name": "PassGuard",
+  "description": "Password Strength Analyzer, CSPRNG Generator, Diceware Passphrases, 2FA Authenticator & Breach Checker",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0c16",
+  "theme_color": "#6366f1",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/static/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/static/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

@@ -14,3 +14,11 @@ build/
 .pytest_cache/
 .coverage
 htmlcov/
+
+# Android build artifacts
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+*.iml
+

@@ -53,7 +53,7 @@ def check_breach(password: str) -> dict:
     try:
         response = httpx.get(
             f"{HIBP_API_URL}{prefix}",
-            headers={"User-Agent": "PasswordSecurityApp-UnivOuargla/1.0"},
+            headers={"User-Agent": "PasswordSecurityApp/1.0"},
             timeout=5.0,
         )
 
