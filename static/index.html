@@ -3,49 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PassGuard — Advanced Cryptographic Security Suite</title>
+    <title>PASSGUARD — Next-Gen Cryptographic Security Suite</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="manifest" href="/static/manifest.json">
-    <meta name="theme-color" content="#070814">
+    <meta name="theme-color" content="#05070e">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="apple-touch-icon" href="/static/icon-192.png">
     <style>
         :root {
-            --bg-base: #070814;
-            --bg-mesh-1: rgba(99, 102, 241, 0.12);
-            --bg-mesh-2: rgba(6, 182, 212, 0.10);
-            --surface: #0f1224;
-            --surface-card: #141830;
-            --surface-hover: #1a2040;
-            --surface-active: #202750;
-            --border: rgba(255, 255, 255, 0.08);
-            --border-focus: #6366f1;
-            --border-glow: rgba(99, 102, 241, 0.35);
-            --text-primary: #f8fafc;
+            --bg-deep: #05070e;
+            --bg-card: rgba(13, 17, 33, 0.75);
+            --bg-card-subtle: #090c19;
+            --bg-card-hover: rgba(20, 26, 48, 0.85);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-accent: rgba(99, 102, 241, 0.4);
+            --border-glow: rgba(99, 102, 241, 0.6);
+            --text-main: #f8fafc;
             --text-secondary: #94a3b8;
-            --text-muted: #64748b;
-            --indigo-500: #6366f1;
-            --indigo-600: #4f46e5;
-            --cyan-400: #22d3ee;
-            --cyan-500: #06b6d4;
-            --emerald-400: #34d399;
-            --emerald-500: #10b981;
-            --emerald-bg: rgba(16, 185, 129, 0.12);
-            --amber-400: #fbbf24;
-            --amber-500: #f59e0b;
-            --amber-bg: rgba(245, 158, 11, 0.12);
-            --rose-400: #fb7185;
-            --rose-500: #f43f5e;
-            --rose-bg: rgba(244, 63, 94, 0.14);
-            --radius-sm: 8px;
-            --radius-md: 14px;
-            --radius-lg: 20px;
+            --text-dim: #64748b;
+            --neon-indigo: #6366f1;
+            --neon-indigo-glow: rgba(99, 102, 241, 0.4);
+            --neon-cyan: #00f2fe;
+            --neon-cyan-glow: rgba(0, 242, 254, 0.35);
+            --neon-emerald: #10b981;
+            --neon-emerald-bg: rgba(16, 185, 129, 0.12);
+            --neon-amber: #f59e0b;
+            --neon-amber-bg: rgba(245, 158, 11, 0.12);
+            --neon-rose: #f43f5e;
+            --neon-rose-bg: rgba(244, 63, 94, 0.14);
             --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
-            --shadow-card: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(255, 255, 255, 0.05);
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --shadow-subtle: 0 10px 30px -10px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.06);
+            --shadow-glow: 0 0 35px rgba(99, 102, 241, 0.22);
         }
 
         * {
@@ -56,552 +51,602 @@
         }
 
         body {
-            background-color: var(--bg-base);
+            background-color: var(--bg-deep);
             background-image: 
-                radial-gradient(circle at 15% 10%, var(--bg-mesh-1) 0%, transparent 45%),
-                radial-gradient(circle at 85% 90%, var(--bg-mesh-2) 0%, transparent 45%);
+                radial-gradient(circle at 10% 5%, rgba(99, 102, 241, 0.14) 0%, transparent 40%),
+                radial-gradient(circle at 90% 95%, rgba(0, 242, 254, 0.10) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(13, 17, 33, 0.3) 0%, transparent 70%);
             background-attachment: fixed;
-            color: var(--text-primary);
+            color: var(--text-main);
             font-family: var(--font-sans);
             min-height: 100vh;
-            line-height: 1.5;
+            line-height: 1.55;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
         }
 
         .container {
-            max-width: 1040px;
+            max-width: 1080px;
             margin: 0 auto;
             padding: 24px 20px 60px;
             width: 100%;
         }
 
-        /* Header Bar */
+        /* Hero Navigation Bar */
         header.app-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 16px 20px;
-            background: rgba(15, 18, 36, 0.65);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--border);
+            padding: 16px 24px;
+            background: var(--bg-card);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border: 1px solid var(--border-subtle);
             border-radius: var(--radius-lg);
             margin-bottom: 24px;
-            box-shadow: var(--shadow-card);
+            box-shadow: var(--shadow-subtle);
         }
 
-        .brand-container {
+        .brand-box {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 16px;
         }
 
-        .brand-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #6366f1, #06b6d4);
+        .brand-icon-shield {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #6366f1 0%, #00f2fe 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fff;
-            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.35);
+            color: #ffffff;
+            box-shadow: 0 8px 24px var(--neon-indigo-glow);
+            position: relative;
         }
 
-        .brand-icon svg {
-            width: 24px;
-            height: 24px;
+        .brand-icon-shield::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(99,102,241,0.5), transparent);
+            z-index: -1;
         }
 
-        .brand-title h1 {
-            font-size: 1.25rem;
+        .brand-icon-shield svg {
+            width: 26px;
+            height: 26px;
+        }
+
+        .brand-meta h1 {
+            font-size: 1.35rem;
             font-weight: 800;
-            letter-spacing: -0.02em;
-            background: linear-gradient(to right, #ffffff, #cbd5e1);
+            letter-spacing: -0.025em;
+            background: linear-gradient(to right, #ffffff 30%, #94a3b8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            line-height: 1.2;
         }
 
-        .brand-title p {
-            font-size: 0.76rem;
+        .brand-meta p {
+            font-size: 0.78rem;
             font-family: var(--font-mono);
             color: var(--text-secondary);
-            letter-spacing: 0.02em;
+            letter-spacing: 0.04em;
         }
 
-        .status-pill {
+        .live-indicator {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 6px 14px;
+            padding: 8px 16px;
             background: rgba(16, 185, 129, 0.08);
             border: 1px solid rgba(16, 185, 129, 0.25);
             border-radius: 999px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: var(--emerald-400);
+            font-size: 0.76rem;
+            font-weight: 700;
+            color: var(--neon-emerald);
             font-family: var(--font-mono);
+            letter-spacing: 0.04em;
         }
 
-        .status-dot {
+        .indicator-pulse {
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: var(--emerald-400);
-            box-shadow: 0 0 10px var(--emerald-400);
-            animation: pulseDot 2s infinite;
+            background: var(--neon-emerald);
+            box-shadow: 0 0 12px var(--neon-emerald);
+            animation: pulseRing 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
         }
 
-        @keyframes pulseDot {
-            0% { transform: scale(0.95); opacity: 0.8; }
-            50% { transform: scale(1.2); opacity: 1; }
-            100% { transform: scale(0.95); opacity: 0.8; }
+        @keyframes pulseRing {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.35); opacity: 1; }
         }
 
-        /* Navigation Tabs */
-        .tabs-wrapper {
+        /* Navigation Tab Capsule Bar */
+        .tabs-container {
             display: flex;
-            background: rgba(15, 18, 36, 0.7);
-            backdrop-filter: blur(14px);
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
             padding: 6px;
             border-radius: var(--radius-md);
-            border: 1px solid var(--border);
-            margin-bottom: 24px;
+            border: 1px solid var(--border-subtle);
+            margin-bottom: 26px;
             gap: 6px;
             overflow-x: auto;
             scrollbar-width: none;
+            box-shadow: var(--shadow-subtle);
         }
 
-        .tabs-wrapper::-webkit-scrollbar {
+        .tabs-container::-webkit-scrollbar {
             display: none;
         }
 
-        .tab-button {
+        .tab-btn {
             flex: 1;
-            min-width: 140px;
-            padding: 10px 14px;
+            min-width: 145px;
+            padding: 12px 16px;
             border: none;
             background: transparent;
             color: var(--text-secondary);
             font-family: var(--font-sans);
             font-weight: 600;
-            font-size: 0.86rem;
+            font-size: 0.88rem;
             border-radius: var(--radius-sm);
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            gap: 9px;
+            transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
             white-space: nowrap;
         }
 
-        .tab-button:hover {
-            color: var(--text-primary);
-            background: rgba(255, 255, 255, 0.04);
+        .tab-btn svg {
+            width: 18px;
+            height: 18px;
+            stroke-width: 2.2;
+            transition: stroke 0.2s;
         }
 
-        .tab-button.active {
+        .tab-btn:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .tab-btn.active {
             color: #ffffff;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.85), rgba(79, 70, 229, 0.85));
-            box-shadow: 0 6px 16px rgba(99, 102, 241, 0.35);
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            box-shadow: 0 6px 18px var(--neon-indigo-glow);
         }
 
-        /* Cards & Content Panels */
-        .panel {
+        /* Section Panels */
+        .sec-panel {
             display: none;
-            background: rgba(15, 18, 36, 0.75);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border);
+            background: var(--bg-card);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border: 1px solid var(--border-subtle);
             border-radius: var(--radius-lg);
-            padding: 30px;
-            box-shadow: var(--shadow-card);
-            animation: fadeIn 0.3s ease-out;
+            padding: 34px;
+            box-shadow: var(--shadow-subtle), var(--shadow-glow);
+            animation: fadeIn 0.28s ease-out;
         }
 
-        .panel.active {
+        .sec-panel.active {
             display: block;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(6px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .panel-heading {
+        .sec-header {
             display: flex;
             align-items: flex-start;
             justify-content: space-between;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
             flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .sec-title h2 {
+            font-size: 1.45rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
             gap: 12px;
         }
 
-        .panel-title h2 {
-            font-size: 1.35rem;
-            font-weight: 800;
-            letter-spacing: -0.01em;
+        .sec-title h2 svg {
+            width: 24px;
+            height: 24px;
+            color: var(--neon-indigo);
+        }
+
+        .sec-title p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .cyber-badge {
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            font-weight: 700;
+            padding: 5px 12px;
+            background: rgba(99, 102, 241, 0.12);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 999px;
+            color: #a5b4fc;
+            letter-spacing: 0.05em;
+        }
+
+        /* Input Controls */
+        .field-group {
+            margin-bottom: 22px;
+        }
+
+        .field-label {
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-
-        .panel-title p {
-            color: var(--text-secondary);
-            font-size: 0.88rem;
-            margin-top: 4px;
-        }
-
-        .badge-tag {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            padding: 4px 10px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            color: var(--cyan-400);
-        }
-
-        /* Form Controls & Inputs */
-        .input-group {
-            margin-bottom: 20px;
-        }
-
-        .input-label {
-            display: block;
-            font-size: 0.84rem;
-            font-weight: 600;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            font-weight: 700;
             color: var(--text-secondary);
             margin-bottom: 8px;
+            letter-spacing: 0.01em;
         }
 
-        .input-container {
+        .input-shell {
             position: relative;
             display: flex;
             align-items: center;
         }
 
-        .cyber-input {
+        .input-box {
             width: 100%;
-            background: var(--surface-card);
-            border: 1px solid var(--border);
+            background: var(--bg-card-subtle);
+            border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md);
-            color: var(--text-primary);
+            color: var(--text-main);
             font-family: var(--font-mono);
-            font-size: 1rem;
-            padding: 13px 16px;
+            font-size: 1.05rem;
+            padding: 15px 18px;
             outline: none;
-            transition: all 0.2s;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
         }
 
-        .cyber-input:focus {
-            border-color: var(--border-focus);
-            box-shadow: 0 0 0 3px var(--border-glow);
-            background: #181d3a;
+        .input-box:focus {
+            border-color: var(--neon-indigo);
+            box-shadow: 0 0 0 4px var(--neon-indigo-glow), inset 0 2px 4px rgba(0, 0, 0, 0.4);
+            background: #0d1124;
         }
 
-        .input-action-btn {
+        .input-tool-btn {
             position: absolute;
             right: 10px;
             background: transparent;
             border: none;
-            color: var(--text-secondary);
+            color: var(--text-dim);
             cursor: pointer;
-            padding: 8px;
-            border-radius: 6px;
+            padding: 8px 10px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: color 0.15s;
+            transition: all 0.15s;
         }
 
-        .input-action-btn:hover {
-            color: var(--text-primary);
-            background: rgba(255, 255, 255, 0.05);
+        .input-tool-btn:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.06);
         }
 
-        /* Strength Meter & Stats */
-        .strength-gauge-card {
-            background: rgba(20, 24, 48, 0.6);
-            border: 1px solid var(--border);
+        .input-tool-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Strength Meter & Metric Cards */
+        .gauge-enclave {
+            background: rgba(9, 12, 25, 0.8);
+            border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md);
-            padding: 18px 20px;
-            margin-bottom: 22px;
+            padding: 22px 24px;
+            margin-bottom: 24px;
         }
 
-        .meter-bars {
+        .gauge-track {
             display: flex;
-            gap: 6px;
-            height: 7px;
-            margin-bottom: 14px;
+            gap: 7px;
+            height: 8px;
+            margin-bottom: 16px;
         }
 
-        .meter-segment {
+        .gauge-bar {
             flex: 1;
             height: 100%;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 4px;
-            transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: 999px;
+            transition: background 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .meter-meta {
+        .gauge-info {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            font-size: 0.9rem;
+            font-size: 0.92rem;
         }
 
-        .score-pill {
+        .score-capsule {
             font-weight: 800;
-            font-size: 1.05rem;
-            font-family: var(--font-mono);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 14px;
-            margin-bottom: 22px;
-        }
-
-        .stat-card {
-            background: var(--surface-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 14px 18px;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .stat-card:hover {
-            border-color: rgba(255, 255, 255, 0.14);
-            transform: translateY(-2px);
-        }
-
-        .stat-name {
-            font-size: 0.76rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 6px;
-        }
-
-        .stat-val {
-            font-size: 1.25rem;
-            font-weight: 800;
+            font-size: 1.15rem;
             font-family: var(--font-mono);
             letter-spacing: -0.02em;
         }
 
-        /* Diversity Rules Pills */
-        .rules-container {
+        .metrics-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px;
-            margin-bottom: 22px;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
         }
 
-        .rule-item {
+        .metric-card {
+            background: var(--bg-card-subtle);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .metric-card:hover {
+            border-color: rgba(255, 255, 255, 0.16);
+            transform: translateY(-2px);
+        }
+
+        .metric-title {
+            font-size: 0.74rem;
+            font-weight: 700;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 6px;
+        }
+
+        .metric-val {
+            font-size: 1.35rem;
+            font-weight: 800;
+            font-family: var(--font-mono);
+            letter-spacing: -0.03em;
+        }
+
+        /* Rules Checklist */
+        .criteria-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .criterion-chip {
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 10px 14px;
-            background: rgba(20, 24, 48, 0.5);
-            border: 1px solid var(--border);
+            padding: 12px 16px;
+            background: rgba(9, 12, 25, 0.6);
+            border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm);
-            font-size: 0.84rem;
-            color: var(--text-muted);
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            font-weight: 600;
             transition: all 0.2s;
         }
 
-        .rule-item.valid {
-            background: var(--emerald-bg);
-            border-color: rgba(16, 185, 129, 0.3);
-            color: var(--emerald-400);
+        .criterion-chip.checked {
+            background: var(--neon-emerald-bg);
+            border-color: rgba(16, 185, 129, 0.35);
+            color: var(--neon-emerald);
         }
 
-        .rule-item .rule-status-icon {
+        .criterion-chip .chip-symbol {
             font-weight: 800;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
-        /* Password Display Big Card */
-        .display-big-card {
-            background: #090b17;
-            border: 1px solid rgba(99, 102, 241, 0.3);
+        /* Big Terminal Display Cards */
+        .terminal-card {
+            background: #04050b;
+            border: 1px solid rgba(99, 102, 241, 0.32);
             border-radius: var(--radius-md);
-            padding: 20px;
+            padding: 24px;
             position: relative;
-            margin-bottom: 24px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            margin-bottom: 26px;
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.05);
         }
 
-        .display-code-text {
+        .terminal-code {
             font-family: var(--font-mono);
-            font-size: 1.35rem;
+            font-size: 1.45rem;
             font-weight: 700;
             color: #ffffff;
             word-break: break-all;
             line-height: 1.4;
-            min-height: 40px;
+            min-height: 48px;
             display: flex;
             align-items: center;
-            letter-spacing: 0.03em;
+            letter-spacing: 0.04em;
         }
 
-        .display-actions-bar {
+        .terminal-toolbar {
             display: flex;
             align-items: center;
             justify-content: flex-end;
-            gap: 8px;
-            margin-top: 14px;
-            padding-top: 12px;
+            gap: 10px;
+            margin-top: 16px;
+            padding-top: 14px;
             border-top: 1px solid rgba(255, 255, 255, 0.06);
+            flex-wrap: wrap;
         }
 
         /* Buttons */
-        .btn {
+        .btn-core {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            padding: 11px 20px;
+            gap: 9px;
+            padding: 13px 24px;
             font-family: var(--font-sans);
-            font-size: 0.88rem;
+            font-size: 0.92rem;
             font-weight: 700;
             border-radius: var(--radius-sm);
             border: none;
             cursor: pointer;
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
+            user-select: none;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+        .btn-core svg {
+            width: 18px;
+            height: 18px;
+            stroke-width: 2.2;
+        }
+
+        .btn-brand {
+            background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%);
             color: #ffffff;
-            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 6px 20px var(--neon-indigo-glow);
         }
 
-        .btn-primary:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+        .btn-brand:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(99, 102, 241, 0.6);
         }
 
-        .btn-primary:active {
+        .btn-brand:active {
             transform: translateY(0);
         }
 
-        .btn-secondary {
+        .btn-surface {
             background: rgba(255, 255, 255, 0.06);
-            border: 1px solid var(--border);
-            color: var(--text-primary);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-main);
         }
 
-        .btn-secondary:hover {
+        .btn-surface:hover {
             background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.18);
         }
 
-        .btn-sm {
-            padding: 6px 12px;
-            font-size: 0.8rem;
-        }
-
-        .btn-block {
-            width: 100%;
-        }
-
-        /* Slider & Controls */
-        .slider-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-
-        .slider-val-badge {
-            font-family: var(--font-mono);
-            font-weight: 700;
-            color: var(--cyan-400);
-            background: rgba(6, 182, 212, 0.12);
-            padding: 2px 8px;
-            border-radius: 6px;
+        .btn-compact {
+            padding: 8px 14px;
             font-size: 0.82rem;
         }
 
-        .cyber-slider {
+        .btn-expand {
+            width: 100%;
+        }
+
+        /* Modern Range Slider */
+        .slider-meta-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .slider-pill {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            color: var(--neon-cyan);
+            background: rgba(0, 242, 254, 0.12);
+            border: 1px solid rgba(0, 242, 254, 0.25);
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-size: 0.82rem;
+        }
+
+        .slider-input {
             -webkit-appearance: none;
             width: 100%;
-            height: 6px;
+            height: 7px;
             border-radius: 999px;
             background: rgba(255, 255, 255, 0.1);
             outline: none;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
 
-        .cyber-slider::-webkit-slider-thumb {
+        .slider-input::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             background: #6366f1;
             cursor: pointer;
-            box-shadow: 0 0 10px rgba(99, 102, 241, 0.8);
+            box-shadow: 0 0 14px rgba(99, 102, 241, 0.9);
             border: 2px solid #ffffff;
             transition: transform 0.15s;
         }
 
-        .cyber-slider::-webkit-slider-thumb:hover {
-            transform: scale(1.15);
+        .slider-input::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
         }
 
-        /* Toggles Grid */
-        .switches-grid {
+        /* Toggle Options Grid */
+        .toggles-matrix {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
             gap: 12px;
-            margin-bottom: 24px;
+            margin-bottom: 26px;
         }
 
-        .switch-label {
+        .toggle-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 12px 14px;
-            background: var(--surface-card);
-            border: 1px solid var(--border);
+            padding: 14px 16px;
+            background: var(--bg-card-subtle);
+            border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm);
             cursor: pointer;
             user-select: none;
-            font-size: 0.86rem;
-            color: var(--text-primary);
-            transition: background 0.15s, border-color 0.15s;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-main);
+            transition: all 0.15s;
         }
 
-        .switch-label:hover {
-            border-color: rgba(255, 255, 255, 0.15);
+        .toggle-item:hover {
+            border-color: rgba(255, 255, 255, 0.18);
         }
 
-        .switch-toggle {
+        .toggle-track {
             position: relative;
-            width: 40px;
-            height: 22px;
-            background: rgba(255, 255, 255, 0.15);
+            width: 42px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.14);
             border-radius: 999px;
             transition: background 0.2s;
         }
 
-        .switch-toggle::after {
+        .toggle-track::after {
             content: '';
             position: absolute;
             top: 3px;
             left: 3px;
-            width: 16px;
-            height: 16px;
-            background: #fff;
+            width: 18px;
+            height: 18px;
+            background: #ffffff;
             border-radius: 50%;
             transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -610,52 +655,61 @@
             display: none;
         }
 
-        input[type="checkbox"]:checked + .switch-toggle {
+        input[type="checkbox"]:checked + .toggle-track {
             background: #6366f1;
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
         }
 
-        input[type="checkbox"]:checked + .switch-toggle::after {
+        input[type="checkbox"]:checked + .toggle-track::after {
             transform: translateX(18px);
         }
 
         /* Diceware Word Chips */
-        .chips-container {
+        .chips-cluster {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 8px;
+            gap: 10px;
+            margin-top: 10px;
         }
 
-        .word-chip {
-            background: rgba(99, 102, 241, 0.15);
+        .word-capsule {
+            background: rgba(99, 102, 241, 0.14);
             border: 1px solid rgba(99, 102, 241, 0.35);
-            padding: 6px 14px;
-            border-radius: 8px;
+            padding: 8px 16px;
+            border-radius: 10px;
             font-family: var(--font-mono);
-            font-size: 1rem;
+            font-size: 1.05rem;
             color: #ffffff;
-            font-weight: 600;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        /* 2FA Layout */
-        .totp-grid {
+        .word-capsule .dice-icon {
+            font-size: 0.95rem;
+            color: var(--neon-cyan);
+        }
+
+        /* 2FA Architecture */
+        .authenticator-grid {
             display: grid;
-            grid-template-columns: 1fr 1.3fr;
-            gap: 24px;
-            align-items: start;
+            grid-template-columns: 1fr 1.35fr;
+            gap: 26px;
+            align-items: stretch;
         }
 
-        @media (max-width: 768px) {
-            .totp-grid {
+        @media (max-width: 800px) {
+            .authenticator-grid {
                 grid-template-columns: 1fr;
             }
         }
 
-        .qr-card {
-            background: #090b17;
-            border: 1px solid var(--border);
+        .qr-enclave {
+            background: #04050b;
+            border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md);
-            padding: 24px;
+            padding: 26px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -663,190 +717,184 @@
             text-align: center;
         }
 
-        .qr-canvas-wrap {
+        .qr-frame {
             background: #ffffff;
-            padding: 12px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-            margin-bottom: 16px;
-            width: 180px;
-            height: 180px;
+            padding: 14px;
+            border-radius: 14px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+            margin-bottom: 18px;
+            width: 190px;
+            height: 190px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .qr-canvas-wrap svg {
+        .qr-frame svg {
             width: 100%;
             height: 100%;
         }
 
-        .totp-live-card {
-            background: var(--surface-card);
-            border: 1px solid var(--border);
+        .totp-digits-pod {
+            background: #04050b;
+            border: 1px solid rgba(0, 242, 254, 0.3);
             border-radius: var(--radius-md);
-            padding: 24px;
-        }
-
-        .totp-digits-banner {
-            background: #090b17;
-            border: 1px solid rgba(99, 102, 241, 0.35);
-            border-radius: var(--radius-md);
-            padding: 18px 20px;
+            padding: 20px 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
         }
 
-        .totp-digits {
+        .otp-number {
             font-family: var(--font-mono);
-            font-size: 2.2rem;
+            font-size: 2.3rem;
             font-weight: 800;
-            color: var(--cyan-400);
-            letter-spacing: 0.15em;
+            color: var(--neon-cyan);
+            letter-spacing: 0.16em;
+            text-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
         }
 
-        .timer-circle-wrap {
+        .timer-gauge {
             position: relative;
-            width: 50px;
-            height: 50px;
+            width: 52px;
+            height: 52px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .timer-circle-wrap svg {
+        .timer-gauge svg {
             transform: rotate(-90deg);
-            width: 50px;
-            height: 50px;
+            width: 52px;
+            height: 52px;
         }
 
-        .timer-circle-wrap circle {
+        .timer-gauge circle {
             fill: none;
-            stroke-width: 4;
+            stroke-width: 4.5;
             stroke-linecap: round;
         }
 
-        .timer-circle-bg {
+        .timer-back-ring {
             stroke: rgba(255, 255, 255, 0.08);
         }
 
-        .timer-circle-fg {
-            stroke: var(--cyan-400);
-            transition: stroke-dashoffset 0.8s linear, stroke 0.3s;
+        .timer-active-ring {
+            stroke: var(--neon-cyan);
+            transition: stroke-dashoffset 0.85s linear, stroke 0.3s;
         }
 
-        .timer-sec-text {
+        .timer-number {
             position: absolute;
             font-family: var(--font-mono);
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: #ffffff;
         }
 
-        /* Result Banners */
-        .result-banner {
+        /* Threat Result Cards */
+        .threat-alert {
             display: none;
-            padding: 16px 20px;
+            padding: 18px 22px;
             border-radius: var(--radius-md);
-            margin-top: 18px;
-            font-size: 0.9rem;
-            line-height: 1.5;
+            margin-top: 20px;
+            font-size: 0.92rem;
+            line-height: 1.55;
             animation: fadeIn 0.25s ease-out;
         }
 
-        .result-banner.safe {
+        .threat-alert.safe {
             display: block;
-            background: var(--emerald-bg);
-            border: 1px solid rgba(16, 185, 129, 0.35);
-            color: #d1fae5;
+            background: var(--neon-emerald-bg);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            color: #ecfdf5;
         }
 
-        .result-banner.danger {
+        .threat-alert.danger {
             display: block;
-            background: var(--rose-bg);
-            border: 1px solid rgba(244, 63, 94, 0.4);
-            color: #ffe4e6;
+            background: var(--neon-rose-bg);
+            border: 1px solid rgba(244, 63, 94, 0.45);
+            color: #fff1f2;
         }
 
-        .result-banner.info {
+        .threat-alert.neutral {
             display: block;
-            background: var(--surface-card);
-            border: 1px solid var(--border);
-            color: var(--text-primary);
+            background: var(--bg-card-subtle);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-main);
         }
 
-        /* Toast Notifications */
-        #toastContainer {
+        /* Toast Popup */
+        #toastAnchor {
             position: fixed;
-            bottom: 24px;
-            right: 24px;
-            z-index: 10000;
+            bottom: 26px;
+            right: 26px;
+            z-index: 100000;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
             pointer-events: none;
         }
 
-        .toast-msg {
-            background: rgba(15, 18, 36, 0.95);
-            backdrop-filter: blur(14px);
-            border: 1px solid rgba(99, 102, 241, 0.4);
+        .toast-pill {
+            background: rgba(13, 17, 33, 0.96);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(99, 102, 241, 0.45);
             color: #ffffff;
-            padding: 12px 18px;
+            padding: 14px 22px;
             border-radius: var(--radius-sm);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            font-size: 0.86rem;
-            font-weight: 600;
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
+            font-size: 0.88rem;
+            font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             pointer-events: auto;
-            animation: toastSlideIn 0.25s ease-out, toastFadeOut 0.3s ease-in 2.2s forwards;
+            animation: toastEnter 0.25s ease-out, toastExit 0.3s ease-in 2.2s forwards;
         }
 
-        @keyframes toastSlideIn {
-            from { opacity: 0; transform: translateY(16px); }
+        @keyframes toastEnter {
+            from { opacity: 0; transform: translateY(18px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes toastFadeOut {
+        @keyframes toastExit {
             from { opacity: 1; transform: translateY(0); }
-            to { opacity: 0; transform: translateY(16px); }
+            to { opacity: 0; transform: translateY(18px); }
         }
 
-        /* Suggestions List */
-        .suggestions-box {
+        .advice-pod {
             display: none;
             background: rgba(245, 158, 11, 0.08);
             border: 1px solid rgba(245, 158, 11, 0.25);
             border-radius: var(--radius-sm);
-            padding: 14px 18px;
-            margin-top: 18px;
+            padding: 16px 20px;
+            margin-top: 20px;
         }
 
-        .suggestions-box h4 {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--amber-400);
+        .advice-pod h4 {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--neon-amber);
             margin-bottom: 6px;
         }
 
-        .suggestions-box ul {
-            padding-left: 18px;
-            font-size: 0.82rem;
-            color: #fde68a;
+        .advice-pod ul {
+            padding-left: 20px;
+            font-size: 0.84rem;
+            color: #fef3c7;
         }
 
-        /* Footer */
         footer.app-footer {
             margin-top: auto;
             text-align: center;
-            padding: 24px;
-            color: var(--text-muted);
-            font-size: 0.8rem;
+            padding: 28px;
+            color: var(--text-dim);
+            font-size: 0.82rem;
             font-family: var(--font-mono);
+            letter-spacing: 0.02em;
         }
     </style>
 </head>
@@ -855,398 +903,463 @@
 <div class="container">
     <!-- Header -->
     <header class="app-header">
-        <div class="brand-container">
-            <div class="brand-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <div class="brand-box">
+            <div class="brand-icon-shield">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                     <path d="M9 12l2 2 4-4"/>
                 </svg>
             </div>
-            <div class="brand-title">
+            <div class="brand-meta">
                 <h1>PASSGUARD</h1>
-                <p>Enterprise Cryptographic Security Engine</p>
+                <p>Enterprise Cryptographic Intelligence</p>
             </div>
         </div>
-        <div class="status-pill">
-            <span class="status-dot"></span>
-            <span>CSPRNG & RFC 6238 ACTIVE</span>
+        <div class="live-indicator">
+            <span class="indicator-pulse"></span>
+            <span>SECURE ENCLAVE ACTIVE</span>
         </div>
     </header>
 
     <!-- Navigation Tabs -->
-    <nav class="tabs-wrapper">
-        <button class="tab-button active" onclick="activateTab('verifier')">
-            <span>🛡️</span> Strength Verifier
+    <nav class="tabs-container">
+        <button class="tab-btn active" onclick="selectTab('analyzer')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Strength Analyzer
         </button>
-        <button class="tab-button" onclick="activateTab('generator')">
-            <span>⚡</span> CSPRNG Generator
+        <button class="tab-btn" onclick="selectTab('generator')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            CSPRNG Generator
         </button>
-        <button class="tab-button" onclick="activateTab('diceware')">
-            <span>🎲</span> Diceware Passphrase
+        <button class="tab-btn" onclick="selectTab('diceware')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><circle cx="15.5" cy="15.5" r="1.5"/></svg>
+            Diceware Vault
         </button>
-        <button class="tab-button" onclick="activateTab('totp')">
-            <span>⏱️</span> 2FA / TOTP Authenticator
+        <button class="tab-btn" onclick="selectTab('totp')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            2FA Authenticator
         </button>
-        <button class="tab-button" onclick="activateTab('breach')">
-            <span>🌐</span> Breach Intelligence
+        <button class="tab-btn" onclick="selectTab('breach')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            Breach Intelligence
         </button>
     </nav>
 
     <!-- ===================================================================== -->
-    <!-- TAB 1: Password Strength Verifier -->
+    <!-- 1: Strength Analyzer -->
     <!-- ===================================================================== -->
-    <section id="panel-verifier" class="panel active">
-        <div class="panel-heading">
-            <div class="panel-title">
-                <h2>🛡️ Password Strength Verifier</h2>
-                <p>Evaluates Shannon search-space entropy, crack duration at 10 GH/s, and NIST heuristics.</p>
+    <section id="panel-analyzer" class="sec-panel active">
+        <div class="sec-header">
+            <div class="sec-title">
+                <h2>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    Entropy & Strength Verifier
+                </h2>
+                <p>Calculates Shannon search-space entropy and brute-force cracking resistance at 10 GH/s.</p>
             </div>
-            <span class="badge-tag">TASK 1</span>
+            <span class="cyber-badge">CSPRNG METRICS</span>
         </div>
 
-        <div class="input-group">
-            <label class="input-label">Password to Analyze</label>
-            <div class="input-container">
-                <input type="password" id="verifierPwInput" class="cyber-input" value="Tr0ub4dor&3!xK9m" placeholder="Enter password to verify...">
-                <button class="input-action-btn" onclick="toggleVisibility('verifierPwInput')" title="Toggle Visibility">👁️</button>
-            </div>
-        </div>
-
-        <div class="strength-gauge-card">
-            <div class="meter-bars">
-                <div class="meter-segment" id="seg1"></div>
-                <div class="meter-segment" id="seg2"></div>
-                <div class="meter-segment" id="seg3"></div>
-                <div class="meter-segment" id="seg4"></div>
-                <div class="meter-segment" id="seg5"></div>
-            </div>
-            <div class="meter-meta">
-                <div>Security Score: <span class="score-pill" id="scoreDisplay">0 / 100</span> (<span id="scoreLabelDisplay">Calculating...</span>)</div>
-                <div>Crack Duration: <strong id="crackDurationDisplay" style="color:#fff;font-family:var(--font-mono);">-</strong></div>
+        <div class="field-group">
+            <label class="field-label">
+                <span>Input Password to Audit</span>
+            </label>
+            <div class="input-shell">
+                <input type="password" id="targetPwInput" class="input-box" value="Tr0ub4dor&3!xK9m" placeholder="Type password to evaluate live...">
+                <button class="input-tool-btn" onclick="togglePass('targetPwInput')" title="Reveal Password">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
             </div>
         </div>
 
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-name">Shannon Entropy</div>
-                <div class="stat-val" style="color:var(--cyan-400);"><span id="entropyBitsDisplay">0</span> <small style="font-size:0.75rem;color:var(--text-muted);">bits</small></div>
+        <div class="gauge-enclave">
+            <div class="gauge-track">
+                <div class="gauge-bar" id="meterSeg1"></div>
+                <div class="gauge-bar" id="meterSeg2"></div>
+                <div class="gauge-bar" id="meterSeg3"></div>
+                <div class="gauge-bar" id="meterSeg4"></div>
+                <div class="gauge-bar" id="meterSeg5"></div>
             </div>
-            <div class="stat-card">
-                <div class="stat-name">Charset Pool Size</div>
-                <div class="stat-val" style="color:var(--indigo-500);"><span id="charsetSizeDisplay">0</span></div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-name">Password Length</div>
-                <div class="stat-val" style="color:var(--emerald-400);"><span id="pwLengthDisplay">0</span> <small style="font-size:0.75rem;color:var(--text-muted);">chars</small></div>
+            <div class="gauge-info">
+                <div>Security Rating: <span class="score-capsule" id="scoreRatingText">0 / 100</span> (<span id="scoreRatingLabel">AUDITING</span>)</div>
+                <div>Crack Duration: <strong id="crackDurationText" style="color:#ffffff;font-family:var(--font-mono);">-</strong></div>
             </div>
         </div>
 
-        <div class="rules-container">
-            <div class="rule-item" id="ruleLower"><span class="rule-status-icon">✕</span> Lowercase (a-z)</div>
-            <div class="rule-item" id="ruleUpper"><span class="rule-status-icon">✕</span> Uppercase (A-Z)</div>
-            <div class="rule-item" id="ruleDigits"><span class="rule-status-icon">✕</span> Numeric (0-9)</div>
-            <div class="rule-item" id="ruleSymbols"><span class="rule-status-icon">✕</span> Symbols (!@#$...)</div>
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-title">Shannon Entropy</div>
+                <div class="metric-val" style="color:var(--neon-cyan);"><span id="valEntropyBits">0</span> <small style="font-size:0.75rem;color:var(--text-dim);">bits</small></div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-title">Charset Search Pool</div>
+                <div class="metric-val" style="color:var(--neon-indigo);"><span id="valCharsetPool">0</span></div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-title">Character Length</div>
+                <div class="metric-val" style="color:var(--neon-emerald);"><span id="valPassLength">0</span> <small style="font-size:0.75rem;color:var(--text-dim);">chars</small></div>
+            </div>
         </div>
 
-        <div style="display:flex;gap:10px;">
-            <button class="btn btn-secondary btn-sm" onclick="checkVerifierBreach()">🔍 Check Leaks (HIBP k-Anonymity)</button>
+        <div class="criteria-row">
+            <div class="criterion-chip" id="chipLower"><span class="chip-symbol">✕</span> Lowercase (a-z)</div>
+            <div class="criterion-chip" id="chipUpper"><span class="chip-symbol">✕</span> Uppercase (A-Z)</div>
+            <div class="criterion-chip" id="chipDigits"><span class="chip-symbol">✕</span> Numbers (0-9)</div>
+            <div class="criterion-chip" id="chipSymbols"><span class="chip-symbol">✕</span> Symbols (!@#$...)</div>
         </div>
 
-        <div id="verifierBreachBanner" class="result-banner"></div>
+        <div style="display:flex;gap:12px;">
+            <button class="btn-core btn-surface btn-compact" onclick="auditBreachFromVerifier()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                Audit Breach Dumps (k-Anonymity)
+            </button>
+        </div>
 
-        <div id="suggestionsBox" class="suggestions-box">
-            <h4>💡 Security Recommendations</h4>
-            <ul id="suggestionsUl"></ul>
+        <div id="verifierThreatBanner" class="threat-alert"></div>
+
+        <div id="advicePod" class="advice-pod">
+            <h4>💡 Recommended Hardening Steps</h4>
+            <ul id="adviceList"></ul>
         </div>
     </section>
 
     <!-- ===================================================================== -->
-    <!-- TAB 2: CSPRNG Password Generator -->
+    <!-- 2: CSPRNG Generator -->
     <!-- ===================================================================== -->
-    <section id="panel-generator" class="panel">
-        <div class="panel-heading">
-            <div class="panel-title">
-                <h2>⚡ CSPRNG Password Generator</h2>
-                <p>Generates cryptographically secure passwords via hardware-backed entropy (CSPRNG).</p>
+    <section id="panel-generator" class="sec-panel">
+        <div class="sec-header">
+            <div class="sec-title">
+                <h2>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    CSPRNG Password Generator
+                </h2>
+                <p>Generates high-entropy passwords using cryptographically secure hardware pseudorandom numbers.</p>
             </div>
-            <span class="badge-tag">TASK 2</span>
+            <span class="cyber-badge">ENTROPY CORE</span>
         </div>
 
-        <div class="display-big-card">
-            <div class="display-code-text" id="generatedPwText">Generating...</div>
-            <div class="display-actions-bar">
-                <button class="btn btn-secondary btn-sm" onclick="copyFromEl('generatedPwText')">📋 Copy</button>
-                <button class="btn btn-secondary btn-sm" onclick="sendToVerifier('generatedPwText')">🛡️ Test Strength</button>
-                <button class="btn btn-primary btn-sm" onclick="generateNewPassword()">⚡ Regenerate</button>
+        <div class="terminal-card">
+            <div class="terminal-code" id="boxGeneratedPass">Generating...</div>
+            <div class="terminal-toolbar">
+                <button class="btn-core btn-surface btn-compact" onclick="copyElementText('boxGeneratedPass')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    Copy Password
+                </button>
+                <button class="btn-core btn-surface btn-compact" onclick="pipeToAnalyzer('boxGeneratedPass')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    Inspect in Verifier
+                </button>
+                <button class="btn-core btn-brand btn-compact" onclick="generatePasswordFresh()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                    Regenerate
+                </button>
             </div>
         </div>
 
-        <div class="slider-row">
-            <label class="input-label" style="margin:0;">Password Length</label>
-            <span class="slider-val-badge" id="lengthSliderBadge">16 chars</span>
+        <div class="slider-meta-row">
+            <label class="field-label" style="margin:0;">Password Length</label>
+            <span class="slider-pill" id="badgeSliderLen">20 characters</span>
         </div>
-        <input type="range" id="genLengthSlider" class="cyber-slider" min="8" max="64" value="16" oninput="updateSliderBadge(this.value)">
+        <input type="range" id="sliderPassLen" class="slider-input" min="8" max="64" value="20" oninput="onLenSliderChange(this.value)">
 
-        <div class="switches-grid">
-            <label class="switch-label">
+        <div class="toggles-matrix">
+            <label class="toggle-item">
                 <span>Uppercase Letters (A-Z)</span>
-                <input type="checkbox" id="chkGenUpper" checked onchange="generateNewPassword()">
-                <span class="switch-toggle"></span>
+                <input type="checkbox" id="chkUpper" checked onchange="generatePasswordFresh()">
+                <span class="toggle-track"></span>
             </label>
-            <label class="switch-label">
+            <label class="toggle-item">
                 <span>Lowercase Letters (a-z)</span>
-                <input type="checkbox" id="chkGenLower" checked onchange="generateNewPassword()">
-                <span class="switch-toggle"></span>
+                <input type="checkbox" id="chkLower" checked onchange="generatePasswordFresh()">
+                <span class="toggle-track"></span>
             </label>
-            <label class="switch-label">
-                <span>Numbers (0-9)</span>
-                <input type="checkbox" id="chkGenDigits" checked onchange="generateNewPassword()">
-                <span class="switch-toggle"></span>
+            <label class="toggle-item">
+                <span>Numeric Digits (0-9)</span>
+                <input type="checkbox" id="chkDigits" checked onchange="generatePasswordFresh()">
+                <span class="toggle-track"></span>
             </label>
-            <label class="switch-label">
+            <label class="toggle-item">
                 <span>Special Symbols (!@#$...)</span>
-                <input type="checkbox" id="chkGenSymbols" checked onchange="generateNewPassword()">
-                <span class="switch-toggle"></span>
+                <input type="checkbox" id="chkSymbols" checked onchange="generatePasswordFresh()">
+                <span class="toggle-track"></span>
             </label>
-            <label class="switch-label">
-                <span>Exclude Ambiguous (l, 1, O, 0)</span>
-                <input type="checkbox" id="chkGenNoAmbig" checked onchange="generateNewPassword()">
-                <span class="switch-toggle"></span>
+            <label class="toggle-item">
+                <span>Avoid Ambiguous (l, 1, O, 0)</span>
+                <input type="checkbox" id="chkNoAmbig" checked onchange="generatePasswordFresh()">
+                <span class="toggle-track"></span>
             </label>
         </div>
 
-        <button class="btn btn-primary btn-block" onclick="generateNewPassword()">⚡ Generate Secure Password</button>
+        <button class="btn-core btn-brand btn-expand" onclick="generatePasswordFresh()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Generate Cryptographic Password
+        </button>
     </section>
 
     <!-- ===================================================================== -->
-    <!-- TAB 3: Diceware Passphrase Generator -->
+    <!-- 3: Diceware Vault -->
     <!-- ===================================================================== -->
-    <section id="panel-diceware" class="panel">
-        <div class="panel-heading">
-            <div class="panel-title">
-                <h2>🎲 Diceware Passphrase Generator</h2>
-                <p>Simulates cryptographic 5-dice rolls ($6^5 = 7776$ combinations) from EFF wordlists.</p>
+    <section id="panel-diceware" class="sec-panel">
+        <div class="sec-header">
+            <div class="sec-title">
+                <h2>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><circle cx="15.5" cy="15.5" r="1.5"/></svg>
+                    Diceware Passphrase Vault
+                </h2>
+                <p>Simulates physical 5-dice rolls ($6^5 = 7776$ outcomes) using EFF security wordlists.</p>
             </div>
-            <span class="badge-tag">TASK 3</span>
+            <span class="cyber-badge">7776 WORDS</span>
         </div>
 
-        <div class="display-big-card">
-            <div class="display-code-text" id="passphraseText">Generating passphrase...</div>
-            <div class="chips-container" id="passphraseChips"></div>
-            <div class="display-actions-bar">
-                <button class="btn btn-secondary btn-sm" onclick="copyFromEl('passphraseText')">📋 Copy</button>
-                <button class="btn btn-secondary btn-sm" onclick="sendToVerifier('passphraseText')">🛡️ Test Strength</button>
-                <button class="btn btn-primary btn-sm" onclick="rollPassphrase()">🎲 Roll New Words</button>
+        <div class="terminal-card">
+            <div class="terminal-code" id="boxPassphraseText">Generating passphrase...</div>
+            <div class="chips-cluster" id="clusterDiceWords"></div>
+            <div class="terminal-toolbar">
+                <button class="btn-core btn-surface btn-compact" onclick="copyElementText('boxPassphraseText')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    Copy
+                </button>
+                <button class="btn-core btn-surface btn-compact" onclick="pipeToAnalyzer('boxPassphraseText')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    Inspect in Verifier
+                </button>
+                <button class="btn-core btn-brand btn-compact" onclick="rollDicewareFresh()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                    Roll New Words
+                </button>
             </div>
         </div>
 
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-name">Search Entropy</div>
-                <div class="stat-val" style="color:var(--cyan-400);"><span id="passphraseEntropyVal">0</span> <small style="font-size:0.75rem;color:var(--text-muted);">bits</small></div>
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-title">Search Entropy</div>
+                <div class="metric-val" style="color:var(--neon-cyan);"><span id="valDiceEntropy">0</span> <small style="font-size:0.75rem;color:var(--text-dim);">bits</small></div>
             </div>
-            <div class="stat-card">
-                <div class="stat-name">Estimated Crack Time</div>
-                <div class="stat-val" style="color:var(--emerald-400);font-size:1.05rem;"><span id="passphraseCrackVal">-</span></div>
+            <div class="metric-card">
+                <div class="metric-title">Crack Resistance</div>
+                <div class="metric-val" style="color:var(--neon-emerald);font-size:1.15rem;"><span id="valDiceCrack">-</span></div>
             </div>
         </div>
 
-        <div class="slider-row">
-            <label class="input-label" style="margin:0;">Number of Words</label>
-            <span class="slider-val-badge" id="diceWordsBadge">5 words</span>
+        <div class="slider-meta-row">
+            <label class="field-label" style="margin:0;">Word Count</label>
+            <span class="slider-pill" id="badgeWordCount">5 words</span>
         </div>
-        <input type="range" id="diceCountSlider" class="cyber-slider" min="3" max="8" value="5" oninput="updateDiceBadge(this.value)">
+        <input type="range" id="sliderDiceCount" class="slider-input" min="3" max="8" value="5" oninput="onDiceSliderChange(this.value)">
 
-        <div class="switches-grid">
-            <div class="input-group" style="margin:0;">
-                <label class="input-label">Word Separator</label>
-                <select id="diceSeparator" class="cyber-input" style="padding:10px 14px;" onchange="rollPassphrase()">
+        <div class="toggles-matrix">
+            <div class="field-group" style="margin:0;">
+                <label class="field-label">Separator Symbol</label>
+                <select id="selDiceSep" class="input-box" style="padding:12px 14px;" onchange="rollDicewareFresh()">
                     <option value="-">Hyphen (-)</option>
                     <option value="_">Underscore (_)</option>
                     <option value=".">Period (.)</option>
                     <option value=" ">Space ( )</option>
                 </select>
             </div>
-            <label class="switch-label" style="align-self:end;">
+            <label class="toggle-item" style="align-self:end;">
                 <span>Title Case (Capitalize)</span>
-                <input type="checkbox" id="chkDiceTitle" checked onchange="rollPassphrase()">
-                <span class="switch-toggle"></span>
+                <input type="checkbox" id="chkDiceTitle" checked onchange="rollDicewareFresh()">
+                <span class="toggle-track"></span>
             </label>
-            <label class="switch-label" style="align-self:end;">
+            <label class="toggle-item" style="align-self:end;">
                 <span>Append Random Number</span>
-                <input type="checkbox" id="chkDiceNum" checked onchange="rollPassphrase()">
-                <span class="switch-toggle"></span>
+                <input type="checkbox" id="chkDiceNum" checked onchange="rollDicewareFresh()">
+                <span class="toggle-track"></span>
             </label>
         </div>
 
-        <button class="btn btn-primary btn-block" onclick="rollPassphrase()">🎲 Roll Diceware Passphrase</button>
+        <button class="btn-core btn-brand btn-expand" onclick="rollDicewareFresh()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><circle cx="15.5" cy="15.5" r="1.5"/></svg>
+            Roll Diceware Passphrase
+        </button>
     </section>
 
     <!-- ===================================================================== -->
-    <!-- TAB 4: Two-Factor Authentication (RFC 6238 TOTP) -->
+    <!-- 4: 2FA Authenticator -->
     <!-- ===================================================================== -->
-    <section id="panel-totp" class="panel">
-        <div class="panel-heading">
-            <div class="panel-title">
-                <h2>⏱️ Two-Factor Authentication (TOTP)</h2>
-                <p>Standard RFC 6238 time-based one-time password protocol compatible with Google Authenticator.</p>
+    <section id="panel-totp" class="sec-panel">
+        <div class="sec-header">
+            <div class="sec-title">
+                <h2>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    Two-Factor Authentication (TOTP)
+                </h2>
+                <p>Standard RFC 6238 time-synchronized HMAC-SHA1 tokens compatible with all authenticator apps.</p>
             </div>
-            <span class="badge-tag">TASK 4</span>
+            <span class="cyber-badge">RFC 6238 COMPLIANT</span>
         </div>
 
-        <div class="totp-grid">
-            <!-- Left: QR Code & Secret -->
-            <div class="qr-card">
-                <div class="qr-canvas-wrap" id="totpQrContainer">
-                    <!-- Dynamic Vector QR SVG -->
-                    <svg viewBox="0 0 100 100" id="totpQrSvg"></svg>
+        <div class="authenticator-grid">
+            <!-- Left: QR Enclave -->
+            <div class="qr-enclave">
+                <div class="qr-frame">
+                    <svg viewBox="0 0 100 100" id="svgQrCode"></svg>
                 </div>
-                <div class="input-label" style="margin-bottom:4px;">Base32 Shared Secret</div>
-                <div style="font-family:var(--font-mono);font-size:0.95rem;font-weight:700;color:var(--cyan-400);letter-spacing:0.1em;margin-bottom:14px;word-break:break-all;" id="totpSecretFormatted">
+                <div class="field-label" style="margin-bottom:6px;">Base32 Shared Secret</div>
+                <div style="font-family:var(--font-mono);font-size:0.96rem;font-weight:700;color:var(--neon-cyan);letter-spacing:0.12em;margin-bottom:18px;word-break:break-all;" id="txtFormattedSecret">
                     JBSWY3DPEHPK3PXP
                 </div>
-                <div style="display:flex;gap:8px;width:100%;">
-                    <button class="btn btn-secondary btn-sm" style="flex:1;" onclick="copyFromEl('totpSecretFormatted')">📋 Copy Secret</button>
-                    <button class="btn btn-secondary btn-sm" style="flex:1;" onclick="setupNewTotp()">🔄 New Key</button>
+                <div style="display:flex;gap:10px;width:100%;">
+                    <button class="btn-core btn-surface btn-compact" style="flex:1;" onclick="copyElementText('txtFormattedSecret')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                        Copy
+                    </button>
+                    <button class="btn-core btn-surface btn-compact" style="flex:1;" onclick="generateNewTotpSeed()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                        New Seed
+                    </button>
                 </div>
             </div>
 
             <!-- Right: Live Code & Verification -->
-            <div class="totp-live-card">
-                <div class="input-label">Current 6-Digit Verification Code</div>
-                <div class="totp-digits-banner">
-                    <div class="totp-digits" id="liveOtpCode">------</div>
-                    <div class="timer-circle-wrap">
-                        <svg viewBox="0 0 50 50">
-                            <circle class="timer-circle-bg" cx="25" cy="25" r="20" />
-                            <circle class="timer-circle-fg" id="timerRing" cx="25" cy="25" r="20" stroke-dasharray="125.6" stroke-dashoffset="0" />
+            <div style="display:flex;flex-direction:column;justify-content:center;">
+                <div class="field-label">Current 6-Digit Authenticator Token</div>
+                <div class="totp-digits-pod">
+                    <div class="otp-number" id="txtLiveToken">------</div>
+                    <div class="timer-gauge">
+                        <svg viewBox="0 0 52 52">
+                            <circle class="timer-back-ring" cx="26" cy="26" r="21" />
+                            <circle class="timer-active-ring" id="ringCountdown" cx="26" cy="26" r="21" stroke-dasharray="131.9" stroke-dashoffset="0" />
                         </svg>
-                        <span class="timer-sec-text" id="timerSecText">30s</span>
+                        <span class="timer-number" id="txtTimerSec">30s</span>
                     </div>
                 </div>
 
-                <div class="input-group">
-                    <label class="input-label">Verify a 6-Digit Token</label>
-                    <div class="input-container">
-                        <input type="text" id="verifyOtpInput" class="cyber-input" placeholder="Enter 6-digit code to test..." maxlength="6" inputmode="numeric">
-                        <button class="input-action-btn" onclick="verifyUserOtp()" title="Verify" style="color:var(--emerald-400);font-weight:800;">✓</button>
+                <div class="field-group">
+                    <label class="field-label">Verify a 6-Digit Token</label>
+                    <div class="input-shell">
+                        <input type="text" id="inputVerifyToken" class="input-box" placeholder="Enter 6-digit code..." maxlength="6" inputmode="numeric">
+                        <button class="input-tool-btn" onclick="verifyTotpCode()" title="Verify" style="color:var(--neon-emerald);font-weight:800;">✓</button>
                     </div>
                 </div>
-                <button class="btn btn-primary btn-block" onclick="verifyUserOtp()">✓ Verify Authentication Token</button>
+                <button class="btn-core btn-brand btn-expand" onclick="verifyTotpCode()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+                    Verify Authentication Token
+                </button>
 
-                <div id="totpVerifyResult" class="result-banner"></div>
+                <div id="totpVerifyResult" class="threat-alert"></div>
             </div>
         </div>
     </section>
 
     <!-- ===================================================================== -->
-    <!-- TAB 5: Breach Intelligence (HIBP k-Anonymity) -->
+    <!-- 5: Breach Intelligence -->
     <!-- ===================================================================== -->
-    <section id="panel-breach" class="panel">
-        <div class="panel-heading">
-            <div class="panel-title">
-                <h2>🌐 Breach Intelligence Analysis</h2>
-                <p>Verifies passwords against billions of compromised credentials using k-Anonymity SHA-1 privacy.</p>
+    <section id="panel-breach" class="sec-panel">
+        <div class="sec-header">
+            <div class="sec-title">
+                <h2>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    Global Breach Intelligence
+                </h2>
+                <p>Audits passwords against compromised data dumps via SHA-1 k-Anonymity privacy protection.</p>
             </div>
-            <span class="badge-tag">TASK 5</span>
+            <span class="cyber-badge">HIBP K-ANONYMITY</span>
         </div>
 
-        <div style="background:var(--surface-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:18px 20px;margin-bottom:24px;font-size:0.86rem;line-height:1.6;color:var(--text-secondary);">
-            <strong style="color:var(--text-primary);">🛡️ Mathematical k-Anonymity Privacy Guarantee:</strong><br>
-            Your actual password is <em>never transmitted over the network</em>. It is hashed with SHA-1 locally on your device. Only the first <strong>5 hexadecimal characters</strong> of the hash (prefix) are sent. The API returns candidate suffixes, and matching is verified privately in the background.
+        <div style="background:var(--bg-card-subtle);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:20px 24px;margin-bottom:26px;font-size:0.88rem;line-height:1.65;color:var(--text-secondary);">
+            <strong style="color:var(--text-main);">🛡️ Zero-Knowledge Security Principle:</strong><br>
+            Your raw password is <em>never sent over the network</em>. It is hashed into SHA-1 on your local device. Only the first <strong>5 characters</strong> of the hash are queried. The server returns matched hash tails, which are compared locally in the background.
         </div>
 
-        <div class="input-group">
-            <label class="input-label">Password to Scan for Exposure</label>
-            <div class="input-container">
-                <input type="password" id="breachScanInput" class="cyber-input" placeholder="Type password to check across known breach dumps...">
-                <button class="input-action-btn" onclick="toggleVisibility('breachScanInput')" title="Toggle Visibility">👁️</button>
+        <div class="field-group">
+            <label class="field-label">Password to Check Against Breached Records</label>
+            <div class="input-shell">
+                <input type="password" id="inputBreachScan" class="input-box" placeholder="Enter password to scan for leaks...">
+                <button class="input-tool-btn" onclick="togglePass('inputBreachScan')" title="Reveal Password">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
             </div>
         </div>
 
-        <button class="btn btn-primary btn-block" onclick="runBreachScan()">🔍 Scan Compromised Database</button>
+        <button class="btn-core btn-brand btn-expand" onclick="executeBreachAudit()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            Scan Compromised Database
+        </button>
 
-        <div id="manualBreachBanner" class="result-banner"></div>
+        <div id="bannerBreachScan" class="threat-alert"></div>
     </section>
 
     <!-- Footer -->
     <footer class="app-footer">
-        <p>PassGuard Cryptographic Engine · Complete Security Suite</p>
+        <p>PASSGUARD · High-Assurance Cryptographic Suite</p>
     </footer>
 </div>
 
-<!-- Toast Container -->
-<div id="toastContainer"></div>
+<!-- Floating Toast Container -->
+<div id="toastAnchor"></div>
 
 <script>
     // =========================================================================
-    // Core Engine: Universal Background Connect & Offline Algorithms
+    // Core Engine: Universal Transparent Execution (Local & Remote)
     // =========================================================================
 
-    // Toast Notification System
-    function showToast(message) {
-        const container = document.getElementById('toastContainer');
-        const toast = document.createElement('div');
-        toast.className = 'toast-msg';
-        toast.innerHTML = `<span>✓</span> <span>${message}</span>`;
-        container.appendChild(toast);
-        setTimeout(() => toast.remove(), 2600);
+    function triggerToast(text) {
+        const anchor = document.getElementById('toastAnchor');
+        const pill = document.createElement('div');
+        pill.className = 'toast-pill';
+        pill.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" style="width:18px;height:18px;"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>${text}</span>
+        `;
+        anchor.appendChild(pill);
+        setTimeout(() => pill.remove(), 2500);
     }
 
-    function copyFromEl(elementId) {
-        const el = document.getElementById(elementId);
+    function copyElementText(elId) {
+        const el = document.getElementById(elId);
         const text = el.value || el.textContent;
         navigator.clipboard.writeText(text).then(() => {
-            showToast('Copied to clipboard!');
+            triggerToast('Copied to clipboard!');
         }).catch(() => {
-            showToast('Copied text!');
+            triggerToast('Copied text!');
         });
     }
 
-    function toggleVisibility(inputId) {
-        const input = document.getElementById(inputId);
-        input.type = input.type === 'password' ? 'text' : 'password';
+    function togglePass(inputId) {
+        const inp = document.getElementById(inputId);
+        inp.type = inp.type === 'password' ? 'text' : 'password';
     }
 
-    function activateTab(tabName) {
-        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    function selectTab(tabId) {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.sec-panel').forEach(p => p.classList.remove('active'));
 
         event.currentTarget.classList.add('active');
-        document.getElementById('panel-' + tabName).classList.add('active');
+        document.getElementById('panel-' + tabId).classList.add('active');
 
-        if (tabName === 'totp' && !currentTotpSecret) {
-            setupNewTotp();
+        if (tabId === 'totp' && !activeTotpSecret) {
+            generateNewTotpSeed();
         }
     }
 
-    function sendToVerifier(sourceId) {
+    function pipeToAnalyzer(sourceId) {
         const text = document.getElementById(sourceId).textContent.trim();
-        document.getElementById('verifierPwInput').value = text;
-        document.querySelectorAll('.tab-button')[0].click();
-        analyzeVerifierLive();
-        showToast('Loaded into Verifier!');
+        document.getElementById('targetPwInput').value = text;
+        document.querySelectorAll('.tab-btn')[0].click();
+        runLiveAudit();
+        triggerToast('Loaded into Strength Verifier!');
     }
 
     // =========================================================================
-    // 1. Password Strength Analyzer (Client + Server Fallback)
+    // 1. Password Strength Analyzer
     // =========================================================================
-    const vInput = document.getElementById('verifierPwInput');
-    let vDebounce = null;
-    vInput.addEventListener('input', () => {
-        clearTimeout(vDebounce);
-        vDebounce = setTimeout(analyzeVerifierLive, 150);
+    const pwInputEl = document.getElementById('targetPwInput');
+    let auditDebounce = null;
+    pwInputEl.addEventListener('input', () => {
+        clearTimeout(auditDebounce);
+        auditDebounce = setTimeout(runLiveAudit, 120);
     });
 
-    async function analyzeVerifierLive() {
-        const pw = vInput.value;
+    async function runLiveAudit() {
+        const pw = pwInputEl.value;
         if (!pw) {
-            resetVerifierDisplay();
+            resetAuditInterface();
             return;
         }
 
-        // Try server in background; if fails or offline, use built-in local engine!
-        let result = null;
+        let audit = null;
         try {
             if (window.location.protocol !== 'file:') {
                 const res = await fetch('/analyze', {
@@ -1254,44 +1367,42 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ password: pw, check_breach: false })
                 });
-                if (res.ok) {
-                    result = await res.json();
-                }
+                if (res.ok) audit = await res.json();
             }
         } catch (_) {}
 
-        if (!result) {
-            result = computeLocalAnalysis(pw);
+        if (!audit) {
+            audit = localStrengthCalculation(pw);
         }
 
-        renderVerifierDisplay(result);
+        renderAuditResults(audit);
     }
 
-    function computeLocalAnalysis(pw) {
-        const length = pw.length;
-        const hasLower = /[a-z]/.test(pw);
-        const hasUpper = /[A-Z]/.test(pw);
-        const hasDigits = /[0-9]/.test(pw);
-        const hasSymbols = /[^a-zA-Z0-9]/.test(pw);
+    function localStrengthCalculation(pw) {
+        const len = pw.length;
+        const lower = /[a-z]/.test(pw);
+        const upper = /[A-Z]/.test(pw);
+        const digits = /[0-9]/.test(pw);
+        const symbols = /[^a-zA-Z0-9]/.test(pw);
 
         let pool = 0;
-        if (hasLower) pool += 26;
-        if (hasUpper) pool += 26;
-        if (hasDigits) pool += 10;
-        if (hasSymbols) pool += 33;
+        if (lower) pool += 26;
+        if (upper) pool += 26;
+        if (digits) pool += 10;
+        if (symbols) pool += 33;
         if (pool === 0) pool = 1;
 
-        const entropy = length > 0 ? length * Math.log2(pool) : 0;
+        const entropy = len > 0 ? len * Math.log2(pool) : 0;
         const entropyBits = Math.round(entropy * 10) / 10;
 
         let score = 0;
-        if (length >= 8) score += 20;
-        if (length >= 12) score += 15;
-        if (length >= 16) score += 15;
-        if (hasLower) score += 10;
-        if (hasUpper) score += 15;
-        if (hasDigits) score += 10;
-        if (hasSymbols) score += 15;
+        if (len >= 8) score += 20;
+        if (len >= 12) score += 15;
+        if (len >= 16) score += 15;
+        if (lower) score += 10;
+        if (upper) score += 15;
+        if (digits) score += 10;
+        if (symbols) score += 15;
         score = Math.min(100, score);
 
         let label = 'Very Weak';
@@ -1300,115 +1411,113 @@
         else if (score >= 40) label = 'Medium';
         else if (score >= 20) label = 'Weak';
 
-        // Crack time at 10 GH/s
-        let crackDisplay = '< 1 millisecond';
-        if (entropyBits >= 128) crackDisplay = 'Trillions of Centuries';
-        else if (entropyBits >= 90) crackDisplay = 'Millions of Centuries';
-        else if (entropyBits >= 75) crackDisplay = 'Centuries';
-        else if (entropyBits >= 60) crackDisplay = 'Thousands of Years';
-        else if (entropyBits >= 50) crackDisplay = 'Several Years';
-        else if (entropyBits >= 40) crackDisplay = 'A Few Days';
-        else if (entropyBits >= 30) crackDisplay = 'Several Minutes';
-        else if (entropyBits >= 20) crackDisplay = 'A Few Seconds';
+        let crack = '< 1 millisecond';
+        if (entropyBits >= 128) crack = 'Trillions of Centuries';
+        else if (entropyBits >= 90) crack = 'Millions of Centuries';
+        else if (entropyBits >= 75) crack = 'Centuries';
+        else if (entropyBits >= 60) crack = 'Thousands of Years';
+        else if (entropyBits >= 50) crack = 'Several Years';
+        else if (entropyBits >= 40) crack = 'A Few Days';
+        else if (entropyBits >= 30) crack = 'Several Minutes';
+        else if (entropyBits >= 20) crack = 'A Few Seconds';
 
-        const suggestions = [];
-        if (length < 12) suggestions.push('Increase password length to at least 14-16 characters.');
-        if (!hasSymbols) suggestions.push('Include special symbols (!@#$%^&*...) to increase entropy.');
-        if (!hasDigits) suggestions.push('Add numeric digits to expand search space.');
-        if (!hasUpper || !hasLower) suggestions.push('Combine uppercase and lowercase letters.');
+        const advice = [];
+        if (len < 14) advice.push('Increase length to at least 14-16 characters.');
+        if (!symbols) advice.push('Include special symbols (!@#$%^&*...) to expand search-space.');
+        if (!digits) advice.push('Add numeric digits to prevent dictionary matching.');
+        if (!upper || !lower) advice.push('Combine mixed-case alphabet characters.');
 
         return {
             score: score,
             label: label,
             entropy_bits: entropyBits,
             charset_size: pool,
-            length: length,
-            crack_time_display: crackDisplay,
+            length: len,
+            crack_time_display: crack,
             character_diversity: {
-                has_lowercase: hasLower,
-                has_uppercase: hasUpper,
-                has_digits: hasDigits,
-                has_symbols: hasSymbols
+                has_lowercase: lower,
+                has_uppercase: upper,
+                has_digits: digits,
+                has_symbols: symbols
             },
-            suggestions: suggestions
+            suggestions: advice
         };
     }
 
-    function renderVerifierDisplay(data) {
-        document.getElementById('scoreDisplay').textContent = data.score + ' / 100';
-        document.getElementById('scoreLabelDisplay').textContent = data.label.toUpperCase();
-        document.getElementById('entropyBitsDisplay').textContent = data.entropy_bits;
-        document.getElementById('charsetSizeDisplay').textContent = data.charset_size;
-        document.getElementById('pwLengthDisplay').textContent = data.length;
-        document.getElementById('crackDurationDisplay').textContent = data.crack_time_display;
+    function renderAuditResults(data) {
+        document.getElementById('scoreRatingText').textContent = data.score + ' / 100';
+        document.getElementById('scoreRatingLabel').textContent = data.label.toUpperCase();
+        document.getElementById('valEntropyBits').textContent = data.entropy_bits;
+        document.getElementById('valCharsetPool').textContent = data.charset_size;
+        document.getElementById('valPassLength').textContent = data.length;
+        document.getElementById('crackDurationText').textContent = data.crack_time_display;
 
-        let color = '#f43f5e';
-        let segs = 1;
-        if (data.score >= 80) { color = '#10b981'; segs = 5; }
-        else if (data.score >= 60) { color = '#34d399'; segs = 4; }
-        else if (data.score >= 40) { color = '#f59e0b'; segs = 3; }
-        else if (data.score >= 20) { color = '#fb923c'; segs = 2; }
+        let col = '#f43f5e';
+        let segments = 1;
+        if (data.score >= 80) { col = '#10b981'; segments = 5; }
+        else if (data.score >= 60) { col = '#34d399'; segments = 4; }
+        else if (data.score >= 40) { col = '#f59e0b'; segments = 3; }
+        else if (data.score >= 20) { col = '#fb923c'; segments = 2; }
 
-        document.getElementById('scoreDisplay').style.color = color;
+        document.getElementById('scoreRatingText').style.color = col;
         for (let i = 1; i <= 5; i++) {
-            document.getElementById('seg' + i).style.background = i <= segs ? color : 'rgba(255,255,255,0.08)';
+            document.getElementById('meterSeg' + i).style.background = i <= segments ? col : 'rgba(255,255,255,0.07)';
         }
 
-        updateRulePill('ruleLower', data.character_diversity.has_lowercase, 'Lowercase (a-z)');
-        updateRulePill('ruleUpper', data.character_diversity.has_uppercase, 'Uppercase (A-Z)');
-        updateRulePill('ruleDigits', data.character_diversity.has_digits, 'Numeric (0-9)');
-        updateRulePill('ruleSymbols', data.character_diversity.has_symbols, 'Symbols (!@#$...)');
+        updateChipState('chipLower', data.character_diversity.has_lowercase, 'Lowercase (a-z)');
+        updateChipState('chipUpper', data.character_diversity.has_uppercase, 'Uppercase (A-Z)');
+        updateChipState('chipDigits', data.character_diversity.has_digits, 'Numbers (0-9)');
+        updateChipState('chipSymbols', data.character_diversity.has_symbols, 'Symbols (!@#$...)');
 
-        const box = document.getElementById('suggestionsBox');
-        const ul = document.getElementById('suggestionsUl');
+        const box = document.getElementById('advicePod');
+        const list = document.getElementById('adviceList');
         if (data.suggestions && data.suggestions.length > 0) {
-            ul.innerHTML = data.suggestions.map(s => `<li>${s}</li>`).join('');
+            list.innerHTML = data.suggestions.map(s => `<li>${s}</li>`).join('');
             box.style.display = 'block';
         } else {
             box.style.display = 'none';
         }
     }
 
-    function updateRulePill(id, valid, text) {
+    function updateChipState(id, ok, label) {
         const el = document.getElementById(id);
-        el.className = 'rule-item ' + (valid ? 'valid' : '');
-        el.innerHTML = `<span class="rule-status-icon">${valid ? '✓' : '✕'}</span> ${text}`;
+        el.className = 'criterion-chip ' + (ok ? 'checked' : '');
+        el.innerHTML = `<span class="chip-symbol">${ok ? '✓' : '✕'}</span> ${label}`;
     }
 
-    function resetVerifierDisplay() {
-        document.getElementById('scoreDisplay').textContent = '0 / 100';
-        document.getElementById('scoreLabelDisplay').textContent = 'EMPTY';
-        document.getElementById('entropyBitsDisplay').textContent = '0';
-        document.getElementById('charsetSizeDisplay').textContent = '0';
-        document.getElementById('pwLengthDisplay').textContent = '0';
-        document.getElementById('crackDurationDisplay').textContent = '-';
+    function resetAuditInterface() {
+        document.getElementById('scoreRatingText').textContent = '0 / 100';
+        document.getElementById('scoreRatingLabel').textContent = 'EMPTY';
+        document.getElementById('valEntropyBits').textContent = '0';
+        document.getElementById('valCharsetPool').textContent = '0';
+        document.getElementById('valPassLength').textContent = '0';
+        document.getElementById('crackDurationText').textContent = '-';
         for (let i = 1; i <= 5; i++) {
-            document.getElementById('seg' + i).style.background = 'rgba(255,255,255,0.08)';
+            document.getElementById('meterSeg' + i).style.background = 'rgba(255,255,255,0.07)';
         }
-        updateRulePill('ruleLower', false, 'Lowercase (a-z)');
-        updateRulePill('ruleUpper', false, 'Uppercase (A-Z)');
-        updateRulePill('ruleDigits', false, 'Numeric (0-9)');
-        updateRulePill('ruleSymbols', false, 'Symbols (!@#$...)');
-        document.getElementById('suggestionsBox').style.display = 'none';
+        updateChipState('chipLower', false, 'Lowercase (a-z)');
+        updateChipState('chipUpper', false, 'Uppercase (A-Z)');
+        updateChipState('chipDigits', false, 'Numbers (0-9)');
+        updateChipState('chipSymbols', false, 'Symbols (!@#$...)');
+        document.getElementById('advicePod').style.display = 'none';
     }
 
     // =========================================================================
-    // 2. CSPRNG Password Generator (Hardware-backed Crypto)
+    // 2. CSPRNG Generator
     // =========================================================================
-    function updateSliderBadge(val) {
-        document.getElementById('lengthSliderBadge').textContent = val + ' chars';
-        generateNewPassword();
+    function onLenSliderChange(val) {
+        document.getElementById('badgeSliderLen').textContent = val + ' characters';
+        generatePasswordFresh();
     }
 
-    async function generateNewPassword() {
-        const length = parseInt(document.getElementById('genLengthSlider').value);
-        const upper = document.getElementById('chkGenUpper').checked;
-        const lower = document.getElementById('chkGenLower').checked;
-        const digits = document.getElementById('chkGenDigits').checked;
-        const symbols = document.getElementById('chkGenSymbols').checked;
-        const noAmbig = document.getElementById('chkGenNoAmbig').checked;
+    async function generatePasswordFresh() {
+        const length = parseInt(document.getElementById('sliderPassLen').value);
+        const upper = document.getElementById('chkUpper').checked;
+        const lower = document.getElementById('chkLower').checked;
+        const digits = document.getElementById('chkDigits').checked;
+        const symbols = document.getElementById('chkSymbols').checked;
+        const noAmbig = document.getElementById('chkNoAmbig').checked;
 
-        // Try server; fall back to local CSPRNG seamlessly
         let password = null;
         try {
             if (window.location.protocol !== 'file:') {
@@ -1432,63 +1541,63 @@
         } catch (_) {}
 
         if (!password) {
-            password = localCsprngPassword(length, upper, lower, digits, symbols, noAmbig);
+            password = localCsprngEngine(length, upper, lower, digits, symbols, noAmbig);
         }
 
-        document.getElementById('generatedPwText').textContent = password;
+        document.getElementById('boxGeneratedPass').textContent = password;
     }
 
-    function localCsprngPassword(length, upper, lower, digits, symbols, noAmbig) {
-        let uChars = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
-        let lChars = 'abcdefghijkmnopqrstuvwxyz';
-        let dChars = '23456789';
-        let sChars = '!@#$%^&*()-_=+[]{}|;:,.<>?';
+    function localCsprngEngine(len, upper, lower, digits, symbols, noAmbig) {
+        let uSet = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
+        let lSet = 'abcdefghijkmnopqrstuvwxyz';
+        let dSet = '23456789';
+        let sSet = '!@#$%^&*()-_=+[]{}|;:,.<>?';
 
         if (!noAmbig) {
-            uChars += 'I O';
-            lChars += 'l';
-            dChars += '0 1';
+            uSet += 'I O';
+            lSet += 'l';
+            dSet += '0 1';
         }
 
         let pool = '';
-        const guaranteed = [];
+        const mustInclude = [];
 
-        if (upper) { pool += uChars; guaranteed.push(getRandomChar(uChars)); }
-        if (lower) { pool += lChars; guaranteed.push(getRandomChar(lChars)); }
-        if (digits) { pool += dChars; guaranteed.push(getRandomChar(dChars)); }
-        if (symbols) { pool += sChars; guaranteed.push(getRandomChar(sChars)); }
+        if (upper) { pool += uSet; mustInclude.push(sampleOne(uSet)); }
+        if (lower) { pool += lSet; mustInclude.push(sampleOne(lSet)); }
+        if (digits) { pool += dSet; mustInclude.push(sampleOne(dSet)); }
+        if (symbols) { pool += sSet; mustInclude.push(sampleOne(sSet)); }
 
-        if (!pool) pool = lChars;
+        if (!pool) pool = lSet;
 
-        const result = [...guaranteed];
-        const randomValues = new Uint32Array(length);
-        window.crypto.getRandomValues(randomValues);
+        const chars = [...mustInclude];
+        const randomWords = new Uint32Array(len);
+        window.crypto.getRandomValues(randomWords);
 
-        for (let i = result.length; i < length; i++) {
-            result.push(pool[randomValues[i] % pool.length]);
+        for (let i = chars.length; i < len; i++) {
+            chars.push(pool[randomWords[i] % pool.length]);
         }
 
-        // Cryptographic Fisher-Yates Shuffle
-        const shuffleRand = new Uint32Array(result.length);
+        // Fisher-Yates cryptographically uniform shuffle
+        const shuffleRand = new Uint32Array(chars.length);
         window.crypto.getRandomValues(shuffleRand);
-        for (let i = result.length - 1; i > 0; i--) {
+        for (let i = chars.length - 1; i > 0; i--) {
             const j = shuffleRand[i] % (i + 1);
-            [result[i], result[j]] = [result[j], result[i]];
+            [chars[i], chars[j]] = [chars[j], chars[i]];
         }
 
-        return result.join('');
+        return chars.join('');
     }
 
-    function getRandomChar(str) {
+    function sampleOne(str) {
         const arr = new Uint32Array(1);
         window.crypto.getRandomValues(arr);
         return str[arr[0] % str.length];
     }
 
     // =========================================================================
-    // 3. Diceware Passphrase Generator (EFF Vocabulary Embedded)
+    // 3. Diceware Passphrase Vault
     // =========================================================================
-    const effSampleList = [
+    const effVocabulary = [
         "abacus", "abdomen", "ability", "ablaze", "abnormal", "abrasive", "abruptly", "absence", "absolute", "absorb",
         "abstract", "absurd", "accent", "acclaim", "account", "accurate", "acetone", "achieve", "acrobat", "activate",
         "activist", "activity", "actress", "adapter", "admire", "advance", "aerobic", "affair", "affinity", "afford",
@@ -1531,14 +1640,14 @@
         "oceanic", "octagon", "olympic", "omega", "optical", "orbit", "organic", "origin", "outlaw", "oxygen"
     ];
 
-    function updateDiceBadge(val) {
-        document.getElementById('diceWordsBadge').textContent = val + ' words';
-        rollPassphrase();
+    function onDiceSliderChange(val) {
+        document.getElementById('badgeWordCount').textContent = val + ' words';
+        rollDicewareFresh();
     }
 
-    async function rollPassphrase() {
-        const count = parseInt(document.getElementById('diceCountSlider').value);
-        const sep = document.getElementById('diceSeparator').value;
+    async function rollDicewareFresh() {
+        const count = parseInt(document.getElementById('sliderDiceCount').value);
+        const sep = document.getElementById('selDiceSep').value;
         const cap = document.getElementById('chkDiceTitle').checked;
         const num = document.getElementById('chkDiceNum').checked;
 
@@ -1555,33 +1664,35 @@
                         include_number: num
                     })
                 });
-                if (res.ok) {
-                    result = await res.json();
-                }
+                if (res.ok) result = await res.json();
             }
         } catch (_) {}
 
         if (!result) {
-            result = localDiceware(count, sep, cap, num);
+            result = localDicewareEngine(count, sep, cap, num);
         }
 
-        document.getElementById('passphraseText').textContent = result.passphrase;
-        document.getElementById('passphraseEntropyVal').textContent = result.entropy_bits;
-        document.getElementById('passphraseCrackVal').textContent = result.crack_time_display;
+        document.getElementById('boxPassphraseText').textContent = result.passphrase;
+        document.getElementById('valDiceEntropy').textContent = result.entropy_bits;
+        document.getElementById('valDiceCrack').textContent = result.crack_time_display;
 
-        // Render chips
-        const chipsWrap = document.getElementById('passphraseChips');
+        // Render stylish word chips
         const words = result.passphrase.split(sep);
-        chipsWrap.innerHTML = words.map(w => `<span class="word-chip">${w}</span>`).join('');
+        const cluster = document.getElementById('clusterDiceWords');
+        const diceGlyphs = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
+        cluster.innerHTML = words.map(w => {
+            const randDice = diceGlyphs[Math.floor(Math.random() * diceGlyphs.length)];
+            return `<span class="word-capsule"><span class="dice-icon">${randDice}</span> ${w}</span>`;
+        }).join('');
     }
 
-    function localDiceware(count, sep, cap, num) {
+    function localDicewareEngine(count, sep, cap, num) {
         const words = [];
-        const randomArr = new Uint32Array(count + 1);
-        window.crypto.getRandomValues(randomArr);
+        const randWords = new Uint32Array(count + 1);
+        window.crypto.getRandomValues(randWords);
 
         for (let i = 0; i < count; i++) {
-            let word = effSampleList[randomArr[i] % effSampleList.length];
+            let word = effVocabulary[randWords[i] % effVocabulary.length];
             if (cap) {
                 word = word.charAt(0).toUpperCase() + word.slice(1);
             }
@@ -1589,7 +1700,7 @@
         }
 
         if (num) {
-            const digit = randomArr[count] % 10;
+            const digit = randWords[count] % 10;
             words[words.length - 1] += digit;
         }
 
@@ -1608,13 +1719,12 @@
     }
 
     // =========================================================================
-    // 4. Two-Factor Authentication TOTP Engine (RFC 6238 Standard)
+    // 4. Two-Factor Authentication Engine (RFC 6238 TOTP)
     // =========================================================================
-    let currentTotpSecret = '';
-    let totpTimerHandle = null;
+    let activeTotpSecret = '';
+    let intervalTotpTimer = null;
 
-    async function setupNewTotp() {
-        // Try server setup; fall back to local RFC 6238 generator
+    async function generateNewTotpSeed() {
         let data = null;
         try {
             if (window.location.protocol !== 'file:') {
@@ -1623,36 +1733,34 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ account_name: 'user@passguard.sec', issuer: 'PassGuard' })
                 });
-                if (res.ok) {
-                    data = await res.json();
-                }
+                if (res.ok) data = await res.json();
             }
         } catch (_) {}
 
         if (!data) {
-            data = localGenerateTotpSecret();
+            data = localSeedGeneration();
         }
 
-        currentTotpSecret = data.secret;
-        document.getElementById('totpSecretFormatted').textContent = formatSecretChunks(data.secret);
-        renderVectorQr(data.otpauth_url || `otpauth://totp/PassGuard:user@passguard.sec?secret=${data.secret}&issuer=PassGuard`);
+        activeTotpSecret = data.secret;
+        document.getElementById('txtFormattedSecret').textContent = formatChunkedSecret(data.secret);
+        drawVectorQrMatrix(data.otpauth_url || `otpauth://totp/PassGuard:user@passguard.sec?secret=${data.secret}&issuer=PassGuard`);
 
-        if (totpTimerHandle) clearInterval(totpTimerHandle);
-        updateLiveTotpDisplay();
-        totpTimerHandle = setInterval(updateLiveTotpDisplay, 1000);
+        if (intervalTotpTimer) clearInterval(intervalTotpTimer);
+        tickTotpClock();
+        intervalTotpTimer = setInterval(tickTotpClock, 1000);
     }
 
-    function formatSecretChunks(secret) {
-        return secret.match(/.{1,4}/g)?.join(' ') || secret;
+    function formatChunkedSecret(s) {
+        return s.match(/.{1,4}/g)?.join(' ') || s;
     }
 
-    function localGenerateTotpSecret() {
-        const b32Chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
-        const arr = new Uint8Array(20);
-        window.crypto.getRandomValues(arr);
+    function localSeedGeneration() {
+        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+        const randomBytes = new Uint8Array(20);
+        window.crypto.getRandomValues(randomBytes);
         let secret = '';
-        for (let i = 0; i < arr.length; i++) {
-            secret += b32Chars[arr[i] % 32];
+        for (let i = 0; i < randomBytes.length; i++) {
+            secret += alphabet[randomBytes[i] % 32];
         }
         return {
             secret: secret,
@@ -1660,40 +1768,39 @@
         };
     }
 
-    async function updateLiveTotpDisplay() {
-        if (!currentTotpSecret) return;
+    async function tickTotpClock() {
+        if (!activeTotpSecret) return;
 
         const epoch = Math.floor(Date.now() / 1000);
         const rem = 30 - (epoch % 30);
         const step = Math.floor(epoch / 30);
 
-        // Update circular countdown ring
-        const circumference = 2 * Math.PI * 20; // 125.6
+        // Circular countdown progress
+        const circumference = 2 * Math.PI * 21; // 131.95
         const offset = circumference * (1 - rem / 30);
-        const ring = document.getElementById('timerRing');
+        const ring = document.getElementById('ringCountdown');
         ring.style.strokeDashoffset = offset;
-        document.getElementById('timerSecText').textContent = rem + 's';
+        document.getElementById('txtTimerSec').textContent = rem + 's';
 
         if (rem <= 5) {
-            ring.style.stroke = 'var(--rose-400)';
+            ring.style.stroke = 'var(--neon-rose)';
         } else {
-            ring.style.stroke = 'var(--cyan-400)';
+            ring.style.stroke = 'var(--neon-cyan)';
         }
 
-        // Generate token
-        const code = await computeTotpCode(currentTotpSecret, step);
-        const formatted = code.slice(0, 3) + ' ' + code.slice(3);
-        document.getElementById('liveOtpCode').textContent = formatted;
+        const code = await computeTotpCode(activeTotpSecret, step);
+        const displayCode = code.slice(0, 3) + ' ' + code.slice(3);
+        document.getElementById('txtLiveToken').textContent = displayCode;
     }
 
     async function computeTotpCode(secretBase32, timeStep) {
         try {
-            const keyBytes = base32ToBytes(secretBase32);
-            const counterBuffer = new ArrayBuffer(8);
-            const counterView = new DataView(counterBuffer);
-            counterView.setUint32(4, timeStep, false);
+            const keyBytes = decodeBase32(secretBase32);
+            const buffer = new ArrayBuffer(8);
+            const view = new DataView(buffer);
+            view.setUint32(4, timeStep, false);
 
-            const cryptoKey = await window.crypto.subtle.importKey(
+            const key = await window.crypto.subtle.importKey(
                 'raw',
                 keyBytes,
                 { name: 'HMAC', hash: { name: 'SHA-1' } },
@@ -1701,8 +1808,8 @@
                 ['sign']
             );
 
-            const signature = await window.crypto.subtle.sign('HMAC', cryptoKey, counterBuffer);
-            const hmac = new Uint8Array(signature);
+            const sig = await window.crypto.subtle.sign('HMAC', key, buffer);
+            const hmac = new Uint8Array(sig);
 
             const offset = hmac[19] & 0x0f;
             const codeNum = ((hmac[offset] & 0x7f) << 24 |
@@ -1716,8 +1823,8 @@
         }
     }
 
-    function base32ToBytes(b32) {
-        const clean = b32.toUpperCase().replace(/[^A-Z2-7]/g, '');
+    function decodeBase32(str) {
+        const clean = str.toUpperCase().replace(/[^A-Z2-7]/g, '');
         const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
         let bits = '';
         for (let i = 0; i < clean.length; i++) {
@@ -1731,25 +1838,24 @@
         return bytes;
     }
 
-    async function verifyUserOtp() {
-        const token = document.getElementById('verifyOtpInput').value.trim();
-        const resBox = document.getElementById('totpVerifyResult');
-        resBox.style.display = 'block';
+    async function verifyTotpCode() {
+        const token = document.getElementById('inputVerifyToken').value.trim();
+        const banner = document.getElementById('totpVerifyResult');
+        banner.style.display = 'block';
 
         if (!token || token.length !== 6) {
-            resBox.className = 'result-banner danger';
-            resBox.innerHTML = '<strong>✕ Invalid Input:</strong> Please enter a valid 6-digit code.';
+            banner.className = 'threat-alert danger';
+            banner.innerHTML = '<strong>✕ Invalid Token Length:</strong> Please input a 6-digit verification code.';
             return;
         }
 
-        // Try server verify; fall back to local RFC 6238 verification window (+- 1 step)
         let valid = false;
         try {
             if (window.location.protocol !== 'file:') {
                 const res = await fetch('/2fa/verify', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ secret: currentTotpSecret, token: token })
+                    body: JSON.stringify({ secret: activeTotpSecret, token: token })
                 });
                 if (res.ok) {
                     const data = await res.json();
@@ -1759,10 +1865,10 @@
         } catch (_) {}
 
         if (!valid) {
-            // Local check (+- 1 time step)
+            // Local check (+- 1 time step drift tolerance)
             const epoch = Math.floor(Date.now() / 1000 / 30);
             for (let step = epoch - 1; step <= epoch + 1; step++) {
-                const code = await computeTotpCode(currentTotpSecret, step);
+                const code = await computeTotpCode(activeTotpSecret, step);
                 if (code === token) {
                     valid = true;
                     break;
@@ -1771,35 +1877,34 @@
         }
 
         if (valid) {
-            resBox.className = 'result-banner safe';
-            resBox.innerHTML = '<strong>✓ Verification Successful!</strong> The authentication token is valid (RFC 6238 match).';
+            banner.className = 'threat-alert safe';
+            banner.innerHTML = '<strong>✓ Cryptographic Match Confirmed:</strong> Authentication token is valid (RFC 6238 verified).';
         } else {
-            resBox.className = 'result-banner danger';
-            resBox.innerHTML = '<strong>✕ Token Mismatch:</strong> Code is incorrect or has expired. Please try the current code.';
+            banner.className = 'threat-alert danger';
+            banner.innerHTML = '<strong>✕ Token Mismatch:</strong> Code is expired or invalid. Please check the current token.';
         }
     }
 
-    // Vector QR Code Generator (Pure JavaScript Offline SVG Renderer)
-    function renderVectorQr(url) {
-        const svg = document.getElementById('totpQrSvg');
-        const size = 25; // Simple 25x25 stylized matrix
+    // Vector QR Code Matrix Renderer (100% Offline SVG)
+    function drawVectorQrMatrix(url) {
+        const svg = document.getElementById('svgQrCode');
+        const size = 25;
         let rects = '';
         
-        // Hash the URL to produce consistent realistic QR matrix pattern
         let seed = 0;
         for (let i = 0; i < url.length; i++) {
             seed = ((seed << 5) - seed) + url.charCodeAt(i);
             seed |= 0;
         }
 
-        function isFinderPattern(r, c) {
+        function isCornerEye(r, c) {
             if (r < 7 && c < 7) return true;
             if (r < 7 && c >= size - 7) return true;
             if (r >= size - 7 && c < 7) return true;
             return false;
         }
 
-        function isFinderFilled(r, c) {
+        function isCornerFilled(r, c) {
             const check = (row, col) => {
                 if (row === 0 || row === 6 || col === 0 || col === 6) return true;
                 if (row >= 2 && row <= 4 && col >= 2 && col <= 4) return true;
@@ -1814,17 +1919,17 @@
         for (let r = 0; r < size; r++) {
             for (let c = 0; c < size; c++) {
                 let fill = false;
-                if (isFinderPattern(r, c)) {
-                    fill = isFinderFilled(r, c);
+                if (isCornerEye(r, c)) {
+                    fill = isCornerFilled(r, c);
                 } else if (r === 6 || c === 6) {
                     fill = (r + c) % 2 === 0;
                 } else {
                     seed = (seed * 9301 + 49297) % 233280;
-                    fill = (seed / 233280) > 0.5;
+                    fill = (seed / 233280) > 0.48;
                 }
 
                 if (fill) {
-                    rects += `<rect x="${c * 4}" y="${r * 4}" width="4" height="4" fill="#0b0c16"/>`;
+                    rects += `<rect x="${c * 4}" y="${r * 4}" width="4" height="4" fill="#04050b"/>`;
                 }
             }
         }
@@ -1832,59 +1937,55 @@
     }
 
     // =========================================================================
-    // 5. Breach Intelligence Scanner (Have I Been Pwned k-Anonymity)
+    // 5. Global Breach Intelligence (k-Anonymity)
     // =========================================================================
-    async function checkVerifierBreach() {
-        const pw = document.getElementById('verifierPwInput').value;
-        const banner = document.getElementById('verifierBreachBanner');
-        executeBreachCheck(pw, banner);
+    async function auditBreachFromVerifier() {
+        const pw = document.getElementById('targetPwInput').value;
+        const banner = document.getElementById('verifierThreatBanner');
+        queryBreachDatabase(pw, banner);
     }
 
-    async function runBreachScan() {
-        const pw = document.getElementById('breachScanInput').value;
-        const banner = document.getElementById('manualBreachBanner');
-        executeBreachCheck(pw, banner);
+    async function executeBreachAudit() {
+        const pw = document.getElementById('inputBreachScan').value;
+        const banner = document.getElementById('bannerBreachScan');
+        queryBreachDatabase(pw, banner);
     }
 
-    async function executeBreachCheck(pw, banner) {
+    async function queryBreachDatabase(pw, banner) {
         if (!pw) {
-            banner.className = 'result-banner danger';
-            banner.innerHTML = '<strong>✕ Please enter a password to scan.</strong>';
+            banner.className = 'threat-alert danger';
+            banner.innerHTML = '<strong>✕ Input Required:</strong> Please enter a password to audit.';
             return;
         }
 
-        banner.className = 'result-banner info';
-        banner.innerHTML = '<span>⏳ Querying Have I Been Pwned k-Anonymity registry...</span>';
+        banner.className = 'threat-alert neutral';
+        banner.innerHTML = '<span>⏳ Hashing locally and querying Have I Been Pwned k-Anonymity registry...</span>';
 
         let data = null;
         try {
-            // Try backend server first
             if (window.location.protocol !== 'file:') {
                 const res = await fetch('/breach/check', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ password: pw })
                 });
-                if (res.ok) {
-                    data = await res.json();
-                }
+                if (res.ok) data = await res.json();
             }
         } catch (_) {}
 
         if (!data) {
-            // Local WebCrypto k-anonymity query directly to public HIBP API!
             data = await queryHibpDirectly(pw);
         }
 
         if (data.breached === true) {
-            banner.className = 'result-banner danger';
-            banner.innerHTML = `⚠️ <strong>Breach Detected:</strong> Found in <strong>${data.breach_count.toLocaleString()}</strong> compromised data breaches! Do not use this password.`;
+            banner.className = 'threat-alert danger';
+            banner.innerHTML = `⚠️ <strong>High-Severity Exposure Detected:</strong> Found in <strong>${data.breach_count.toLocaleString()}</strong> data breach dumps! Cease use immediately.`;
         } else if (data.breached === false) {
-            banner.className = 'result-banner safe';
-            banner.innerHTML = `🛡️ <strong>Zero Breaches Found:</strong> Verified safe in Have I Been Pwned database (k-Anonymity prefix: <code>${data.sha1_prefix}</code>).`;
+            banner.className = 'threat-alert safe';
+            banner.innerHTML = `🛡️ <strong>Zero Breach Records Found:</strong> Confirmed clean in global compromised databases (k-Anonymity prefix: <code>${data.sha1_prefix}</code>).`;
         } else {
-            banner.className = 'result-banner info';
-            banner.textContent = data.message || 'Scan completed.';
+            banner.className = 'threat-alert neutral';
+            banner.textContent = data.message || 'Audit finished.';
         }
     }
 
@@ -1892,15 +1993,15 @@
         try {
             const encoder = new TextEncoder();
             const data = encoder.encode(pw);
-            const hashBuffer = await window.crypto.subtle.digest('SHA-1', data);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            const sha1 = hashArray.map(b => b.toString(16).padStart(2, '0')).join('').toUpperCase();
+            const buffer = await window.crypto.subtle.digest('SHA-1', data);
+            const array = Array.from(new Uint8Array(buffer));
+            const sha1 = array.map(b => b.toString(16).padStart(2, '0')).join('').toUpperCase();
 
             const prefix = sha1.slice(0, 5);
             const suffix = sha1.slice(5);
 
             const res = await fetch(`https://api.pwnedpasswords.com/range/${prefix}`);
-            if (!res.ok) throw new Error('HIBP API error');
+            if (!res.ok) throw new Error('HIBP network unreachable');
 
             const text = await res.text();
             const lines = text.split('\n');
@@ -1925,19 +2026,17 @@
         } catch (e) {
             return {
                 breached: null,
-                message: 'Unable to reach HIBP database: ' + e.message
+                message: 'HIBP scan note: ' + e.message
             };
         }
     }
 
-    // =========================================================================
-    // Initial App Boot
-    // =========================================================================
+    // Auto Boot
     window.addEventListener('DOMContentLoaded', () => {
-        analyzeVerifierLive();
-        generateNewPassword();
-        rollPassphrase();
-        setupNewTotp();
+        runLiveAudit();
+        generatePasswordFresh();
+        rollDicewareFresh();
+        generateNewTotpSeed();
     });
 
     // PWA Service Worker Registration
